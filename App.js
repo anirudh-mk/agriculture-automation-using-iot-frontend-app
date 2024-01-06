@@ -24,14 +24,17 @@ const screenOptions = {
     borderTopLeftRadius:10,
     borderTopRightRadius:10,
     background: '#fff'
-  }
+  },
 }
 const App = () => {
   return (
     <NavigationContainer>
-      <Tab.Navigator screenOptions={ screenOptions }>
+      <Tab.Navigator 
+        screenOptions={ screenOptions } 
+        initialRouteName="Home"
+      >
         <Tab.Screen 
-          name="home" 
+          name="Home" 
           component={ HomeScreen } 
           options={{
             tabBarIcon: ({ focused }) => (
@@ -43,7 +46,7 @@ const App = () => {
           }}
         />
         <Tab.Screen
-          name="statistics"
+          name="Statistics"
           component={ StatisticScreen }
           options={{
             tabBarIcon: ({ focused }) => (
@@ -55,7 +58,7 @@ const App = () => {
           }}
         />
         <Tab.Screen 
-          name="user" 
+          name="User" 
           component={ UserScreen } 
           options={{
             tabBarIcon: ({ focused }) => (
