@@ -32,8 +32,8 @@ const App = () => {
           name="home" 
           component={HomeScreen} 
           options={{
-            tabBarIcon: ({ color }) => (
-              <MaterialCommunityIcons name="home" color={color} size={26} />
+            tabBarIcon: ({ color, focused }) => (
+              <MaterialCommunityIcons name="home" color={color} size={focused?30:26} />
             ),
           }}
         />
@@ -41,8 +41,8 @@ const App = () => {
           name="statistics"
           component={StatisticScreen}
           options={{
-            tabBarIcon: ({color}) => (
-              <MaterialCommunityIcons name='finance' color={color} size={26}/>
+            tabBarIcon: ({color, focused}) => (
+              <MaterialCommunityIcons name='finance' color={color} size={focused?30:26}/>
             ),
           }}
         />
@@ -50,8 +50,8 @@ const App = () => {
           name="user" 
           component={UserScreen} 
           options={{
-            tabBarIcon: ({ color }) => (
-              <MaterialCommunityIcons name="account" color={color} size={26} />
+            tabBarIcon: ({ color, focused }) => (
+              <MaterialCommunityIcons name="account" color={color} size={focused?30:26} />
             ),
           }}
         />
