@@ -1,11 +1,12 @@
+import { View, Text } from 'react-native'
 import React from 'react'
 import HeaddingText from '../components/HeaddingText'
 
-function StatisticScreen() {
+const StatisticScreen = () => {
   return (
-    <div>
-        <HeaddingText text='Statistics'/>
-    </div>
+    <View>
+      <HeaddingText text='Statistics'/>
+    </View>
   )
 }
 

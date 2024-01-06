@@ -5,6 +5,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import HomeScreen from './screens/HomeScreen';
 import UserScreen from './screens/UserScreen';
+import StatisticScreen from './screens/StatisticScreen';
 
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
@@ -31,21 +32,28 @@ const App = () => {
           name="home" 
           component={HomeScreen} 
           options={{
-            tabBarLabel: 'Home',
             tabBarIcon: ({ color }) => (
               <MaterialCommunityIcons name="home" color={color} size={26} />
             ),
           }}
-          />
+        />
+        <Tab.Screen
+          name="statistics"
+          component={StatisticScreen}
+          options={{
+            tabBarIcon: ({color}) => (
+              <MaterialCommunityIcons name='finance' color={color} size={26}/>
+            ),
+          }}
+        />
         <Tab.Screen 
-        name="user" 
-        component={UserScreen} 
-        options={{
-          tabBarLabel: 'Home',
-          tabBarIcon: ({ color }) => (
-            <MaterialCommunityIcons name="account" color={color} size={26} />
-          ),
-        }}
+          name="user" 
+          component={UserScreen} 
+          options={{
+            tabBarIcon: ({ color }) => (
+              <MaterialCommunityIcons name="account" color={color} size={26} />
+            ),
+          }}
         />
       </Tab.Navigator>
     </NavigationContainer>
