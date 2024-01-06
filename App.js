@@ -6,6 +6,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from './screens/HomeScreen';
 import UserScreen from './screens/UserScreen';
 
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+
 const Tab = createBottomTabNavigator();
 const screenOptions = {
   tabBarShowLabel:false,
@@ -28,6 +30,12 @@ const App = () => {
         <Tab.Screen 
           name="Screen1" 
           component={HomeScreen} 
+          options={{
+            tabBarLabel: 'Home',
+            tabBarIcon: ({ color }) => (
+              <MaterialCommunityIcons name="home" color={color} size={26} />
+            ),
+          }}
           />
         <Tab.Screen name="Screen2" component={UserScreen} />
       </Tab.Navigator>
