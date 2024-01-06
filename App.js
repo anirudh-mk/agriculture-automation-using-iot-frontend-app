@@ -28,7 +28,7 @@ const App = () => {
     <NavigationContainer>
       <Tab.Navigator screenOptions={screenOptions}>
         <Tab.Screen 
-          name="Screen1" 
+          name="home" 
           component={HomeScreen} 
           options={{
             tabBarLabel: 'Home',
@@ -37,7 +37,16 @@ const App = () => {
             ),
           }}
           />
-        <Tab.Screen name="Screen2" component={UserScreen} />
+        <Tab.Screen 
+        name="user" 
+        component={UserScreen} 
+        options={{
+          tabBarLabel: 'Home',
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="account" color={color} size={26} />
+          ),
+        }}
+        />
       </Tab.Navigator>
     </NavigationContainer>
   );
