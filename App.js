@@ -1,13 +1,15 @@
-
 import React from 'react';
+
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import HomeScreen from './screens/HomeScreen';
 import UserScreen from './screens/UserScreen';
 import StatisticScreen from './screens/StatisticScreen';
 
-import { MaterialCommunityIcons } from '@expo/vector-icons';
+import colors from './utils/Colors';
 
 const Tab = createBottomTabNavigator();
 const screenOptions = {
@@ -27,31 +29,40 @@ const screenOptions = {
 const App = () => {
   return (
     <NavigationContainer>
-      <Tab.Navigator screenOptions={screenOptions}>
+      <Tab.Navigator screenOptions={ screenOptions }>
         <Tab.Screen 
           name="home" 
-          component={HomeScreen} 
+          component={ HomeScreen } 
           options={{
-            tabBarIcon: ({ color, focused }) => (
-              <MaterialCommunityIcons name="home" color={color} size={focused?30:26} />
+            tabBarIcon: ({ focused }) => (
+              <MaterialCommunityIcons 
+              name="home" 
+              color={ focused? colors.primary: colors.gray } 
+              size={ focused? 30: 26 } />
             ),
           }}
         />
         <Tab.Screen
           name="statistics"
-          component={StatisticScreen}
+          component={ StatisticScreen }
           options={{
-            tabBarIcon: ({color, focused}) => (
-              <MaterialCommunityIcons name='finance' color={color} size={focused?30:26}/>
+            tabBarIcon: ({ focused }) => (
+              <MaterialCommunityIcons 
+              name='finance' 
+              color={ focused? colors.primary: colors.gray } 
+              size={ focused? 30: 26 }/>
             ),
           }}
         />
         <Tab.Screen 
           name="user" 
-          component={UserScreen} 
+          component={ UserScreen } 
           options={{
-            tabBarIcon: ({ color, focused }) => (
-              <MaterialCommunityIcons name="account" color={color} size={focused?30:26} />
+            tabBarIcon: ({ focused }) => (
+              <MaterialCommunityIcons 
+              name="account" 
+              color={ focused? colors.primary: colors.gray } 
+              size={ focused? 30: 26} />
             ),
           }}
         />
