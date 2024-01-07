@@ -3,7 +3,6 @@ import React from 'react'
 
 const TextButton = ({ color, height, width, top, border_radious, name, text_color }) => {
   return (
-    <View>
         <View style={{ 
             width:width, 
             height:height, 
@@ -14,7 +13,6 @@ const TextButton = ({ color, height, width, top, border_radious, name, text_colo
             }}>
             <Text style={{color:text_color}}>{name}</Text>
         </View>
-    </View>
   )
 }
 
