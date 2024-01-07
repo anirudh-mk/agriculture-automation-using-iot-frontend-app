@@ -10,6 +10,7 @@ import UserScreen from './screens/UserScreen';
 import StatisticScreen from './screens/StatisticScreen';
 
 import colors from './utils/Colors';
+import LoginScreen from './screens/LoginScreen';
 
 const Tab = createBottomTabNavigator();
 const screenOptions = {
@@ -28,49 +29,50 @@ const screenOptions = {
 }
 const App = () => {
   return (
-    <NavigationContainer>
-      <Tab.Navigator 
-        screenOptions={ screenOptions } 
-        initialRouteName="Home"
-      >
-        <Tab.Screen 
-          name="Home" 
-          component={ HomeScreen } 
-          options={{
-            tabBarIcon: ({ focused }) => (
-              <MaterialCommunityIcons 
-              name="home" 
-              color={ focused? colors.primary: colors.gray } 
-              size={ focused? 30: 26 } />
-            ),
-          }}
-        />
-        <Tab.Screen
-          name="Statistics"
-          component={ StatisticScreen }
-          options={{
-            tabBarIcon: ({ focused }) => (
-              <MaterialCommunityIcons 
-              name='finance' 
-              color={ focused? colors.primary: colors.gray } 
-              size={ focused? 30: 26 }/>
-            ),
-          }}
-        />
-        <Tab.Screen 
-          name="User" 
-          component={ UserScreen } 
-          options={{
-            tabBarIcon: ({ focused }) => (
-              <MaterialCommunityIcons 
-              name="account" 
-              color={ focused? colors.primary: colors.gray } 
-              size={ focused? 30: 26} />
-            ),
-          }}
-        />
-      </Tab.Navigator>
-    </NavigationContainer>
+      <LoginScreen/>
+    // <NavigationContainer>
+    //   <Tab.Navigator 
+    //     screenOptions={ screenOptions } 
+    //     initialRouteName="Home"
+    //   >
+    //     <Tab.Screen 
+    //       name="Home" 
+    //       component={ HomeScreen } 
+    //       options={{
+    //         tabBarIcon: ({ focused }) => (
+    //           <MaterialCommunityIcons 
+    //           name="home" 
+    //           color={ focused? colors.primary: colors.gray } 
+    //           size={ focused? 30: 26 } />
+    //         ),
+    //       }}
+    //     />
+    //     <Tab.Screen
+    //       name="Statistics"
+    //       component={ StatisticScreen }
+    //       options={{
+    //         tabBarIcon: ({ focused }) => (
+    //           <MaterialCommunityIcons 
+    //           name='finance' 
+    //           color={ focused? colors.primary: colors.gray } 
+    //           size={ focused? 30: 26 }/>
+    //         ),
+    //       }}
+    //     />
+    //     <Tab.Screen 
+    //       name="User" 
+    //       component={ UserScreen } 
+    //       options={{
+    //         tabBarIcon: ({ focused }) => (
+    //           <MaterialCommunityIcons 
+    //           name="account" 
+    //           color={ focused? colors.primary: colors.gray } 
+    //           size={ focused? 30: 26} />
+    //         ),
+    //       }}
+    //     />
+    //   </Tab.Navigator>
+    // </NavigationContainer>
   );
 };
 
