@@ -10,7 +10,7 @@ import UserScreen from './screens/UserScreen';
 import StatisticScreen from './screens/StatisticScreen';
 
 import colors from './utils/Colors';
-import LoginScreen from './screens/LoginScreen';
+import WelcomeScreen from './screens/WelcomeScreen';
 
 const Tab = createBottomTabNavigator();
 const screenOptions = {
@@ -29,7 +29,7 @@ const screenOptions = {
 }
 const App = () => {
   return (
-      <LoginScreen/>
+      <WelcomeScreen/>
     // <NavigationContainer>
     //   <Tab.Navigator 
     //     screenOptions={ screenOptions } 
