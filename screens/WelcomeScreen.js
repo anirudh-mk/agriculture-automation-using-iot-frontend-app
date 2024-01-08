@@ -2,6 +2,9 @@ import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
 import CirculerImage from '../components/CirculerImage'
 import TextButton from '../components/TextButton'
+import colors from '../utils/Colors';
+
+
 const WelcomeScreen = () => {
   return (
     <View style={styles.screen}>
@@ -18,8 +21,9 @@ const WelcomeScreen = () => {
         color='#fff'
         border_radious={20}
         name='Get Started'
-        text_color='#117B01'
+        text_color={colors.secondery}
       />
+      <Text style={styles.text}>Farming simplified Automated</Text>
     </View>
   )
 }
@@ -28,7 +32,13 @@ const styles = StyleSheet.create({
   screen:{
     flex:1,
     alignItems:'center',
-    backgroundColor:'#117B01'
+    backgroundColor:colors.secondery,
+  },
+  text:{
+    color:colors.white,
+    fontSize:20,
+    fontWeight:'600',
+    top:350,
   }
 })
 
