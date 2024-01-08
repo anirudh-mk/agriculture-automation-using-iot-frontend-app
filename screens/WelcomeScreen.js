@@ -1,10 +1,10 @@
-import { View, Text } from 'react-native'
+import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
 import CirculerImage from '../components/CirculerImage'
 import TextButton from '../components/TextButton'
 const WelcomeScreen = () => {
   return (
-    <View>
+    <View style={styles.screen}>
       <CirculerImage 
         source={require('../assets/icon.png')}
         size={330}
@@ -15,7 +15,7 @@ const WelcomeScreen = () => {
         width={240}
         height={59}
         top={300}
-        color='#000'
+        color='#fff'
         border_radious={20}
         name='Get Started'
         text_color='#117B01'
@@ -23,5 +23,13 @@ const WelcomeScreen = () => {
     </View>
   )
 }
+
+const styles = StyleSheet.create({
+  screen:{
+    flex:1,
+    alignItems:'center',
+    backgroundColor:'#117B01'
+  }
+})
 
 export default WelcomeScreen
