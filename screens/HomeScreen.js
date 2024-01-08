@@ -6,11 +6,23 @@ import ImageCard from '../components/ImageCard'
 const HomeScreen = () => {
   return (
     <View style={styles.screen}>
-      <View>
+      <View style={styles.headding_container}>
         <HeaddingText text='Home'/>
       </View>
       <View style={styles.card_container}>
-        <ImageCard/>
+        <ImageCard
+          farm='Farm 1'
+          vegitable='tomato'
+          days_left='20 days left'
+          banner={require('../assets/tomato.png')}
+        />
+        <ImageCard
+          farm='Farm 2'
+          vegitable='Onion'
+          days_left='3 days left'
+          banner={require('../assets/tomato.png')}
+        />
+        
       </View>
     </View>
   )
@@ -22,6 +34,9 @@ const styles = StyleSheet.create({
   },
   card_container:{
     alignItems:'center'
+  },
+  headding_container:{
+    height:100
   }
 })
 
