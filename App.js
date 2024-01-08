@@ -29,50 +29,50 @@ const screenOptions = {
 }
 const App = () => {
   return (
-      <WelcomeScreen/>
-    // <NavigationContainer>
-    //   <Tab.Navigator 
-    //     screenOptions={ screenOptions } 
-    //     initialRouteName="Home"
-    //   >
-    //     <Tab.Screen 
-    //       name="Home" 
-    //       component={ HomeScreen } 
-    //       options={{
-    //         tabBarIcon: ({ focused }) => (
-    //           <MaterialCommunityIcons 
-    //           name="home" 
-    //           color={ focused? colors.primary: colors.gray } 
-    //           size={ focused? 30: 26 } />
-    //         ),
-    //       }}
-    //     />
-    //     <Tab.Screen
-    //       name="Statistics"
-    //       component={ StatisticScreen }
-    //       options={{
-    //         tabBarIcon: ({ focused }) => (
-    //           <MaterialCommunityIcons 
-    //           name='finance' 
-    //           color={ focused? colors.primary: colors.gray } 
-    //           size={ focused? 30: 26 }/>
-    //         ),
-    //       }}
-    //     />
-    //     <Tab.Screen 
-    //       name="User" 
-    //       component={ UserScreen } 
-    //       options={{
-    //         tabBarIcon: ({ focused }) => (
-    //           <MaterialCommunityIcons 
-    //           name="account" 
-    //           color={ focused? colors.primary: colors.gray } 
-    //           size={ focused? 30: 26} />
-    //         ),
-    //       }}
-    //     />
-    //   </Tab.Navigator>
-    // </NavigationContainer>
+      // <WelcomeScreen/>
+    <NavigationContainer>
+      <Tab.Navigator 
+        screenOptions={ screenOptions } 
+        initialRouteName="Home"
+      >
+        <Tab.Screen 
+          name="Home" 
+          component={ HomeScreen } 
+          options={{
+            tabBarIcon: ({ focused }) => (
+              <MaterialCommunityIcons 
+              name="home" 
+              color={ focused? colors.primary: colors.gray } 
+              size={ focused? 30: 26 } />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Statistics"
+          component={ StatisticScreen }
+          options={{
+            tabBarIcon: ({ focused }) => (
+              <MaterialCommunityIcons 
+              name='finance' 
+              color={ focused? colors.primary: colors.gray } 
+              size={ focused? 30: 26 }/>
+            ),
+          }}
+        />
+        <Tab.Screen 
+          name="User" 
+          component={ UserScreen } 
+          options={{
+            tabBarIcon: ({ focused }) => (
+              <MaterialCommunityIcons 
+              name="account" 
+              color={ focused? colors.primary: colors.gray } 
+              size={ focused? 30: 26} />
+            ),
+          }}
+        />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
 };
 
