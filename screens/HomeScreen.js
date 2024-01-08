@@ -6,13 +6,21 @@ import ImageCard from '../components/ImageCard'
 const HomeScreen = () => {
   return (
     <View style={styles.screen}>
-      <HeaddingText text='Home'/>
+      <View>
+        <HeaddingText text='Home'/>
+      </View>
+      <View style={styles.card_container}>
+        <ImageCard/>
+      </View>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
   screen:{
+    flex:1
+  },
+  card_container:{
     alignItems:'center'
   }
 })
