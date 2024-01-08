@@ -1,16 +1,18 @@
-import { StyleSheet, Text, View, Image } from 'react-native'
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 import colors from '../utils/Colors';
 
-const ImageCard = () => {
+const ImageCard = ({ farm, vegitable, days_left, banner}) => {
   return (
     <View style={styles.card}>
-      <Image style={styles.banner} source={require('../assets/tomato.png')}/>
-      <View style={styles.bottom_container}>
-        <Text style={styles.headding}>Farm1</Text>
-        <Text style={styles.main_headding}>Tomato</Text>
-        <Text style={styles.sub_headding}>25 days left</Text>
-      </View>
+      <TouchableOpacity onPress={() => console.log('HELLOS')}>
+        <Image style={styles.banner} source={banner}/>
+        <View style={styles.bottom_container}>
+          <Text style={styles.headding}>{farm}</Text>
+          <Text style={styles.main_headding}>{vegitable}</Text>
+          <Text style={styles.sub_headding}>{days_left}</Text>
+        </View>
+      </TouchableOpacity>
     </View>
   )
 }
@@ -30,6 +32,7 @@ const styles = StyleSheet.create({
         shadowOffset: { width: 0, height: 4 },
         shadowOpacity: 1,
         shadowRadius: 10,
+        marginBottom:20
     },
     banner:{
         height:134,
