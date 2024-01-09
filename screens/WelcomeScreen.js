@@ -19,7 +19,7 @@ const WelcomeScreen = () => {
       </View>
       <View style={styles.buttonContainer}>
         <TextButton
-            width={240}
+            width={300}
             height={59}
             color='#fff'
             border_radious={20}
