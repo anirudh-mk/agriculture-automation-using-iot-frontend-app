@@ -38,10 +38,10 @@ const Screen = createStackNavigator();
 const App = () => {
   return (
       <NavigationContainer>
-      <Screen.Navigator 
-        initialRouteName="welcomeScreen"
-        screenOptions={ screenOptions } 
-      >
+        <Screen.Navigator 
+          initialRouteName="welcomeScreen"
+          screenOptions={ screenOptions } 
+        >
         <Screen.Screen name="welcomeScreen" component={WelcomeScreen} />
         <Screen.Screen name="homeScreen" component={HomeScreen} />
       </Screen.Navigator>
