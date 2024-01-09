@@ -17,8 +17,8 @@ const styles = StyleSheet.create({
         left:20
     },
     text:{
-        color:colors.black,
         fontSize:32,
+        color:colors.black,
     }
 })
 

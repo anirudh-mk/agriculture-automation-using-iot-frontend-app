@@ -1,10 +1,11 @@
-import { View, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
 
 import HeaddingText from '../components/HeaddingText'
 import CirculerImage from '../components/CirculerImage'
 
 import colors from '../utils/Colors'
+import { ScrollView } from 'react-native-gesture-handler'
 
 const UserScreen = () => {
   return (
@@ -14,11 +15,48 @@ const UserScreen = () => {
       </View>
       <View style={ styles.imageContainer }>
         <CirculerImage 
-          source={ require('../assets/favicon.png') } 
-          size={ 100 } 
-          border={ 10 }
-          borderColor={ colors.primary }
+          source={ require('../assets/user.png') } 
+          size={ 121 } 
+          border={ 0 }
+          borderColor={ colors.gray }
           />
+          <Text style={styles.userName}>Anirudh MK</Text>
+          <Text style={styles.userEmail}>anirudhmk123@gmail.com</Text>
+      </View>
+      <View style={styles.scrollingMenu}>
+
+      <ScrollView contentContainerStyle={[{alignItems: 'center' }]}>
+      <CirculerImage 
+          source={ require('../assets/user.png') } 
+          size={ 121 } 
+          border={ 0 }
+          borderColor={ colors.gray }
+          />
+          <CirculerImage 
+          source={ require('../assets/user.png') } 
+          size={ 121 } 
+          border={ 0 }
+          borderColor={ colors.gray }
+          />
+          <CirculerImage 
+          source={ require('../assets/user.png') } 
+          size={ 121 } 
+          border={ 0 }
+          borderColor={ colors.gray }
+          />
+          <CirculerImage 
+          source={ require('../assets/user.png') } 
+          size={ 121 } 
+          border={ 0 }
+          borderColor={ colors.gray }
+          />
+          <CirculerImage 
+          source={ require('../assets/user.png') } 
+          size={ 121 } 
+          border={ 0 }
+          borderColor={ colors.gray }
+          />
+      </ScrollView>
       </View>
     </View>
   )
@@ -27,12 +65,36 @@ const UserScreen = () => {
 const styles = StyleSheet.create({
   screen:{
     flex:1,
+    // position:'relative'
   },
   headdingContainer:{
+    // position:'absolute',
     height:100,
+    width:'100%',
   },
   imageContainer:{
-    top:200,
+    // position:'absolute',
+    alignItems:'center',
+    top:155,
+    width:'100%',
+  },
+  userName:{
+    // position:'absolute',
+    top:131,
+    fontSize:12,
+    fontWeight:'600'
+  },
+  userEmail:{
+    // position:'absolute',
+    top:154,
+    fontSize:10,
+    fontWeight:'600',
+    color:colors.gray,
+  },
+  scrollingMenu:{
+    // position:'absolute',
+    top:375,
+    width:'100%'
   }
 })
 
