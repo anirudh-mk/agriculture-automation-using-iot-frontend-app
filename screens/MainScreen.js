@@ -1,13 +1,15 @@
-import { View, Text } from 'react-native'
-import React from 'react'
-import { NavigationContainer } from '@react-navigation/native';
+import React from 'react';
+
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { createStackNavigator } from '@react-navigation/stack';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+
+import HomeScreen from './HomeScreen';
 import UserScreen from './UserScreen';
 import StatisticScreen from './StatisticScreen';
-import HomeScreen from './HomeScreen';
-const Tab = createStackNavigator();
 
+import colors from '../utils/Colors';
+
+const Tab = createBottomTabNavigator();
 const screenOptions = {
   tabBarShowLabel:false,
   headerShown:false,
@@ -20,12 +22,11 @@ const screenOptions = {
     borderTopLeftRadius:10,
     borderTopRightRadius:10,
     background: '#fff'
-  },
+  }
 }
-
-const MainScreen = () => {
+const App = () => {
   return (
-      <Tab.Navigator 
+     <Tab.Navigator 
         initialRouteName="Home"
         screenOptions={screenOptions}
       >
@@ -66,7 +67,6 @@ const MainScreen = () => {
           }}
         />
       </Tab.Navigator>
-  )
-}
-
-export default MainScreen
+  );
+};
+export default App;
