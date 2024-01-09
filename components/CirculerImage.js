@@ -1,26 +1,32 @@
-import { View, Image, StyleSheet } from 'react-native'
 import React from 'react'
+import { View, Image, StyleSheet } from 'react-native'
 
-const CirculerImage = ({ source, size, top, border, border_color }) => {
+const CirculerImage = ({ source, size, border, borderColor }) => {
   return (
-    <View style={{ height:size, alignItems:'center', top:top }}>
       <View 
-        style={{ 
+        style={ [styles.circulerBorder,{ 
           width:size+border, 
           height:size+border, 
           borderRadius:(size+border)/2, 
-          backgroundColor:border_color,
-          alignItems:'center',
-          justifyContent:'center'
-          }}>
+          backgroundColor:borderColor,
+          }] }>
         <Image 
           source={ source } 
-          style={{ width:size, height:size, borderRadius:size/2 }}
+          style={{ 
+            width:size, 
+            height:size, 
+            borderRadius:size/2 
+          }}
         />
       </View>
-    </View>
   )
 }
 
+const styles = StyleSheet.create({
+  circulerBorder:{
+    alignItems:'center',
+    justifyContent:'center',
+  }
+})
 
 export default CirculerImage
