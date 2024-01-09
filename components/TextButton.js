@@ -1,7 +1,7 @@
-import { View, Text, TouchableHighlight } from 'react-native'
+import { Text, TouchableHighlight } from 'react-native'
 import React from 'react'
 import { useNavigation } from '@react-navigation/native';
-const TextButton = ({ color, height, width, border_radious, name, text_color, naviagtion, route }) => {
+const TextButton = ({ color, height, width, borderRadious, name, textColor, naviagtion, route }) => {
   
   const navigation = useNavigation();
 
@@ -12,22 +12,22 @@ const TextButton = ({ color, height, width, border_radious, name, text_color, na
 
   return (
     <TouchableHighlight style={{ 
-      width:width, 
-      height:height, 
-      borderRadius:border_radious, 
       alignItems:'center',
       justifyContent:'center',
+      width:width, 
+      height:height, 
+      borderRadius:borderRadious, 
       backgroundColor:color,
       }}
-      onPress={handlePress}
+      onPress={ handlePress }
     >
         <Text style={{
-          color:text_color,
           fontSize:16,
-          fontWeight:'600'
+          fontWeight:'600',
+          color:textColor,
           }}
         >
-        {name}
+          { name }
         </Text>
     </TouchableHighlight>
   )
