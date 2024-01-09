@@ -17,20 +17,20 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 
 // const Tab = createBottomTabNavigator();
-// const screenOptions = {
-//   tabBarShowLabel:false,
-//   headerShown:false,
-//   tabBarStyle:{
-//     position:"absolute",
-//     bottom:0,
-//     right:0,
-//     left:0,
-//     height:80,
-//     borderTopLeftRadius:10,
-//     borderTopRightRadius:10,
-//     background: '#fff'
-//   },
-// }
+const screenOptions = {
+  tabBarShowLabel:false,
+  headerShown:false,
+  tabBarStyle:{
+    position:"absolute",
+    bottom:0,
+    right:0,
+    left:0,
+    height:80,
+    borderTopLeftRadius:10,
+    borderTopRightRadius:10,
+    background: '#fff'
+  },
+}
 
 const Screen = createStackNavigator();
 
@@ -38,7 +38,10 @@ const Screen = createStackNavigator();
 const App = () => {
   return (
       <NavigationContainer>
-      <Screen.Navigator initialRouteName="welcomeScreen">
+      <Screen.Navigator 
+        initialRouteName="welcomeScreen"
+        screenOptions={ screenOptions } 
+      >
         <Screen.Screen name="welcomeScreen" component={WelcomeScreen} />
         <Screen.Screen name="homeScreen" component={HomeScreen} />
       </Screen.Navigator>
