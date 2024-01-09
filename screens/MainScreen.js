@@ -8,10 +8,26 @@ import StatisticScreen from './StatisticScreen';
 import HomeScreen from './HomeScreen';
 const Tab = createStackNavigator();
 
+const screenOptions = {
+  tabBarShowLabel:false,
+  headerShown:false,
+  tabBarStyle:{
+    position:"absolute",
+    bottom:0,
+    right:0,
+    left:0,
+    height:80,
+    borderTopLeftRadius:10,
+    borderTopRightRadius:10,
+    background: '#fff'
+  },
+}
+
 const MainScreen = () => {
   return (
       <Tab.Navigator 
         initialRouteName="Home"
+        screenOptions={screenOptions}
       >
         <Tab.Screen 
           name="Home" 
