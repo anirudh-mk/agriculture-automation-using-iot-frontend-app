@@ -11,7 +11,14 @@ const TextButton = ({ color, height, width, border_radious, name, text_color }) 
       justifyContent:'center',
       backgroundColor:color,
       }}>
-        <Text style={{color:text_color}}>{name}</Text>
+        <Text style={{
+          color:text_color,
+          fontSize:16,
+          fontWeight:'600'
+          }}
+        >
+        {name}
+        </Text>
     </TouchableHighlight>
   )
 }
