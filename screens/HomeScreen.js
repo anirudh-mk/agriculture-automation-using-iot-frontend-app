@@ -1,28 +1,28 @@
-import { View, Text, StyleSheet } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 import React from 'react'
+
 import HeaddingText from '../components/HeaddingText'
 import ImageCard from '../components/ImageCard'
 
 const HomeScreen = () => {
   return (
-    <View style={styles.screen}>
-      <View style={styles.headding_container}>
+    <View style={ styles.screen }>
+      <View style={ styles.headdingContainer }>
         <HeaddingText text='Home'/>
       </View>
-      <View style={styles.card_container}>
+      <View style={ styles.cardContainer }>
         <ImageCard
+          banner={ require('../assets/tomato.png') }
           farm='Farm 1'
           vegitable='tomato'
-          days_left='20 days left'
-          banner={require('../assets/tomato.png')}
+          daysLeft='20 days left'
         />
         <ImageCard
+          banner={ require('../assets/tomato.png') }
           farm='Farm 2'
           vegitable='Onion'
-          days_left='3 days left'
-          banner={require('../assets/tomato.png')}
+          daysLeft='3 days left'
         />
-        
       </View>
     </View>
   )
@@ -32,10 +32,10 @@ const styles = StyleSheet.create({
   screen:{
     flex:1
   },
-  card_container:{
+  cardContainer:{
     alignItems:'center'
   },
-  headding_container:{
+  headdingContainer:{
     height:100
   }
 })
