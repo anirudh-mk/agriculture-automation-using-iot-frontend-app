@@ -13,10 +13,9 @@ import colors from './utils/Colors';
 import WelcomeScreen from './screens/WelcomeScreen';
 
 import { createStackNavigator } from '@react-navigation/stack';
+import MainScreen from './screens/MainScreen';
 
 
-
-// const Tab = createBottomTabNavigator();
 const screenOptions = {
   tabBarShowLabel:false,
   headerShown:false,
@@ -34,7 +33,6 @@ const screenOptions = {
 
 const Screen = createStackNavigator();
 
-
 const App = () => {
   return (
       <NavigationContainer>
@@ -44,53 +42,9 @@ const App = () => {
         >
         <Screen.Screen name="welcomeScreen" component={WelcomeScreen} />
         <Screen.Screen name="homeScreen" component={HomeScreen} />
+        <Screen.Screen name="mainScreen" component={MainScreen}/>
       </Screen.Navigator>
     </NavigationContainer>
-
-
-    // <NavigationContainer>
-    //   <Tab.Navigator 
-    //     screenOptions={ screenOptions } 
-    //     initialRouteName="Home"
-    //   >
-    //     <Tab.Screen 
-    //       name="Home" 
-    //       component={ HomeScreen } 
-    //       options={{
-    //         tabBarIcon: ({ focused }) => (
-    //           <MaterialCommunityIcons 
-    //           name="home" 
-    //           color={ focused? colors.primary: colors.gray } 
-    //           size={ focused? 30: 26 } />
-    //         ),
-    //       }}
-    //     />
-    //     <Tab.Screen
-    //       name="Statistics"
-    //       component={ StatisticScreen }
-    //       options={{
-    //         tabBarIcon: ({ focused }) => (
-    //           <MaterialCommunityIcons 
-    //           name='finance' 
-    //           color={ focused? colors.primary: colors.gray } 
-    //           size={ focused? 30: 26 }/>
-    //         ),
-    //       }}
-    //     />
-    //     <Tab.Screen 
-    //       name="User" 
-    //       component={ UserScreen } 
-    //       options={{
-    //         tabBarIcon: ({ focused }) => (
-    //           <MaterialCommunityIcons 
-    //           name="account" 
-    //           color={ focused? colors.primary: colors.gray } 
-    //           size={ focused? 30: 26} />
-    //         ),
-    //       }}
-    //     />
-    //   </Tab.Navigator>
-    // </NavigationContainer>
   );
 };
 
