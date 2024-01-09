@@ -3,10 +3,15 @@ import React from 'react'
 import colors from '../utils/Colors';
 
 const ImageCard = ({ farm, vegitable, daysLeft, banner}) => {
+
+  const handlePress = () => {
+    console.log('clicked');
+  }
+
   return (
       <TouchableOpacity 
         style={ styles.cardContainer } 
-        onPress={ () => console.log('HELLOS') }
+        onPress={ handlePress }
       >
         <Image style={ styles.bannerImage } source={ banner }/>
         <View style={ styles.bottomContainer }>
