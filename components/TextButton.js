@@ -1,12 +1,12 @@
 import { View, Text, TouchableHighlight } from 'react-native'
 import React from 'react'
 import { useNavigation } from '@react-navigation/native';
-const TextButton = ({ color, height, width, border_radious, name, text_color }) => {
+const TextButton = ({ color, height, width, border_radious, name, text_color, naviagtion, route }) => {
   
   const navigation = useNavigation();
 
   const handlePress = () => {
-    navigation.navigate('homeScreen');
+    navigation.navigate(route);
   };
 
 
