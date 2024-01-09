@@ -25,6 +25,7 @@ const WelcomeScreen = () => {
             border_radious={20}
             name='Get Started'
             text_color={colors.secondery}
+            route='mainScreen'
           />
       </View>
       <View style={styles.textContainer}>
