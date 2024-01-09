@@ -2,25 +2,26 @@ import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 import colors from '../utils/Colors';
 
-const ImageCard = ({ farm, vegitable, days_left, banner}) => {
+const ImageCard = ({ farm, vegitable, daysLeft, banner}) => {
   return (
-    <View style={styles.card}>
-      <TouchableOpacity onPress={() => console.log('HELLOS')}>
-        <Image style={styles.banner} source={banner}/>
-        <View style={styles.bottom_container}>
-          <Text style={styles.headding}>{farm}</Text>
-          <Text style={styles.main_headding}>{vegitable}</Text>
-          <Text style={styles.sub_headding}>{days_left}</Text>
+      <TouchableOpacity 
+        style={ styles.cardContainer } 
+        onPress={ () => console.log('HELLOS') }
+      >
+        <Image style={ styles.bannerImage } source={ banner }/>
+        <View style={ styles.bottomContainer }>
+          <Text style={ styles.headding }>{ farm }</Text>
+          <Text style={ styles.mainHeadding }>{ vegitable }</Text>
+          <Text style={ styles.subHeadding }>{ daysLeft }</Text>
         </View>
       </TouchableOpacity>
-    </View>
   )
 }
 
 export default ImageCard
 
 const styles = StyleSheet.create({
-    card:{
+    cardContainer:{
         width:'95%',
         height:202,
         borderRadius:10,
@@ -34,40 +35,40 @@ const styles = StyleSheet.create({
         shadowRadius: 10,
         marginBottom:20
     },
-    banner:{
+    bannerImage:{
+        position:'absolute',
         height:134,
+        width:'100%',
         borderTopLeftRadius:10,
         borderTopRightRadius:10,
-        width:'100%',
-        position:'absolute'
     },
-    bottom_container:{
+    bottomContainer:{
+      position:'absolute',
       top:134,
       width:'100%',
-      position:'absolute'
     },
     headding:{
+        position:'absolute',
         top:14,
         left:15,
-        color:colors.black,
         fontSize:12,
         fontWeight:'600',
-        position:'absolute'
+        color:colors.black,
     },
-    main_headding:{
+    mainHeadding:{
+        position:'absolute',
         top:14,
         right:15,
-        color:colors.black,
         fontSize:12,
         fontWeight:'600',
-        position:'absolute'
+        color:colors.black,
     },
-    sub_headding:{
+    subHeadding:{
+        position:'absolute',
         top:30,
         right:15,
-        color:colors.gray,
         fontSize:10,
         fontWeight:'400',
-        position:'absolute'
+        color:colors.gray,
     }
 })
