@@ -12,24 +12,39 @@ import StatisticScreen from './screens/StatisticScreen';
 import colors from './utils/Colors';
 import WelcomeScreen from './screens/WelcomeScreen';
 
-const Tab = createBottomTabNavigator();
-const screenOptions = {
-  tabBarShowLabel:false,
-  headerShown:false,
-  tabBarStyle:{
-    position:"absolute",
-    bottom:0,
-    right:0,
-    left:0,
-    height:80,
-    borderTopLeftRadius:10,
-    borderTopRightRadius:10,
-    background: '#fff'
-  },
-}
+import { createStackNavigator } from '@react-navigation/stack';
+
+
+
+// const Tab = createBottomTabNavigator();
+// const screenOptions = {
+//   tabBarShowLabel:false,
+//   headerShown:false,
+//   tabBarStyle:{
+//     position:"absolute",
+//     bottom:0,
+//     right:0,
+//     left:0,
+//     height:80,
+//     borderTopLeftRadius:10,
+//     borderTopRightRadius:10,
+//     background: '#fff'
+//   },
+// }
+
+const Screen = createStackNavigator();
+
+
 const App = () => {
   return (
-      <WelcomeScreen/>
+      <NavigationContainer>
+      <Screen.Navigator initialRouteName="welcomeScreen">
+        <Screen.Screen name="welcomeScreen" component={WelcomeScreen} />
+        <Screen.Screen name="homeScreen" component={HomeScreen} />
+      </Screen.Navigator>
+    </NavigationContainer>
+
+
     // <NavigationContainer>
     //   <Tab.Navigator 
     //     screenOptions={ screenOptions } 
