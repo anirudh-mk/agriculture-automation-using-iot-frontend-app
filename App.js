@@ -5,6 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import MainScreen from './screens/MainScreen';
 import WelcomeScreen from './screens/WelcomeScreen';
+import LoginScreen from './screens/LoginScreen';
 
 const screenOptions = {
   tabBarShowLabel:false,
@@ -32,6 +33,7 @@ const App = () => {
         >
         <Screen.Screen name="welcomeScreen" component={ WelcomeScreen } />
         <Screen.Screen name="mainScreen" component={ MainScreen }/>
+        <Screen.Screen name="loginScreen" component={ LoginScreen }/>
       </Screen.Navigator>
     </NavigationContainer>
   );
