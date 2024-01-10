@@ -1,11 +1,11 @@
-import { View, Text, StyleSheet } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 import React, { useState } from 'react'
 import { TextInput } from 'react-native-gesture-handler'
-
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+
 import colors from '../utils/Colors';
 
-const IconTextInput = ({ width, height, icon, placeholder, color, borderRadious, isPassword }) => {
+const IconTextInput = ({ width, height, icon, placeholder, color, borderRadious }) => {
 
     const [divWidth, setDivWidth] = useState(0)
 
@@ -20,7 +20,8 @@ const IconTextInput = ({ width, height, icon, placeholder, color, borderRadious,
         height:height,
         backgroundColor:color,
         borderRadius:borderRadious,
-        flexDirection:'row'
+        flexDirection:'row',
+        position:'relative'
         }}
         onLayout={handleLayout}
     >
@@ -32,18 +33,9 @@ const IconTextInput = ({ width, height, icon, placeholder, color, borderRadious,
         />
     </View>
     <TextInput
-        style={ [styles.textInput, { left:height, height:height, width:isPassword?divWidth-((height*2)):divWidth-(height+10)}] }
+        style={ [styles.textInput, { left:height, height:height, width:divWidth-(height+10)}] }
         placeholder={ placeholder }
     />
-    {isPassword && (
-        <View style={ [styles.passwordContainer, { width:height }] }>
-            <MaterialCommunityIcons 
-                name='eye-off-outline'
-                size={ 19 }
-                color={ colors.gray }
-            />
-        </View> 
-    )}
     </View>
   )
 }
@@ -55,13 +47,6 @@ const styles = StyleSheet.create({
         justifyContent:'center',
         height:'100%',
         left:0,
-    },
-    passwordContainer:{
-        position:'absolute',
-        alignItems:'center',
-        justifyContent:'center',
-        height:'100%',
-        right:0,
     },
     textInput:{
         position:'absolute',
