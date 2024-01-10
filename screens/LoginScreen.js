@@ -4,6 +4,7 @@ import CirculerImage from '../components/CirculerImage'
 import TextButton from '../components/TextButton'
 import colors from '../utils/Colors'
 import IconTextInput from '../components/IconTextInput'
+import IconPasswordInput from '../components/IconPasswordInput'
 
 const LoginScreen = () => {
   return (
@@ -23,17 +24,17 @@ const LoginScreen = () => {
                 color={colors.white}
                 icon='at'
                 borderRadious={ 10 }
-                isPassword={ false }
+                placeholder='Username'
             />
         </View>
         <View style={ styles.passwordContainer }>
-            <IconTextInput
+            <IconPasswordInput
                 width='90%'
                 height={ 45 }
                 color={colors.white}
                 icon='lock'
                 borderRadious={ 10 }
-                isPassword={ true }
+                placeholder='Password'
             />
         </View>
         <View style={ styles.forgotPassword }>
@@ -58,8 +59,9 @@ const LoginScreen = () => {
                 height={ 52 }
                 width='90%'
                 borderRadious={ 12 }
-                name='Login'
+                name='Login with Google'
                 textColor={ colors.gray }
+                onPress={()=>console.log('heoo')}
                 />
         </View>
     </View>
