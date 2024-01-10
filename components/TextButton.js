@@ -1,7 +1,7 @@
 import { Text, TouchableHighlight } from 'react-native'
 import React from 'react'
 import { useNavigation } from '@react-navigation/native';
-const TextButton = ({ color, height, width, borderRadious, name, textColor, naviagtion, route }) => {
+const TextButton = ({ color, height, width, borderRadious, name, textColor, route }) => {
   
   const navigation = useNavigation();
 
