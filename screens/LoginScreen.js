@@ -3,6 +3,7 @@ import React from 'react'
 import CirculerImage from '../components/CirculerImage'
 import TextButton from '../components/TextButton'
 import colors from '../utils/Colors'
+import IconTextInput from '../components/IconTextInput'
 
 const LoginScreen = () => {
   return (
@@ -16,10 +17,24 @@ const LoginScreen = () => {
             />
         </View>
         <View style={ styles.userNameContainer }>
-
+            <IconTextInput
+                width='90%'
+                height={ 45 }
+                color={colors.white}
+                icon='at'
+                borderRadious={ 10 }
+                isPassword={ false }
+            />
         </View>
         <View style={ styles.passwordContainer }>
-
+            <IconTextInput
+                width='90%'
+                height={ 45 }
+                color={colors.white}
+                icon='lock'
+                borderRadious={ 10 }
+                isPassword={ true }
+            />
         </View>
         <View style={ styles.forgotPassword }>
             <Text style={ styles.forgotPasswordText }>Forgot password?</Text>
@@ -69,7 +84,6 @@ const styles = StyleSheet.create({
         width:'100%',
         top:381,
         height:45,
-        backgroundColor:'gray'
     }, 
     passwordContainer:{
         position:'absolute',
@@ -77,7 +91,6 @@ const styles = StyleSheet.create({
         width:'100%',
         top:446,
         height:45,
-        backgroundColor:'gray'
     },
     forgotPassword:{
         position:'absolute',
@@ -85,7 +98,10 @@ const styles = StyleSheet.create({
         top:510,
     },
     forgotPasswordText:{
-
+        position:'absolute',
+        right:28,
+        fontWeight:'600',
+        color:colors.white,
     },
     LoginButtonContainer:{
         position:'absolute',
@@ -100,7 +116,8 @@ const styles = StyleSheet.create({
         top:618,
     },
     orText:{
-
+        color:colors.white,
+        fontWeight:'600'
     },
     LoginWithGoogleContainer:{
         position:'absolute',
