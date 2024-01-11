@@ -9,8 +9,8 @@ import { ScrollView } from 'react-native-gesture-handler'
 
 const UserScreen = () => {
   return (
-    <View style={ styles.screen }>
-      <View style={ styles.headdingContainer }>
+    <View style={styles.screen}>
+      <View style={styles.headdingContainer}>
         <HeaddingText text='User'/>
       </View>
       <View style={ styles.imageContainer }>
@@ -24,77 +24,93 @@ const UserScreen = () => {
           <Text style={styles.userEmail}>anirudhmk123@gmail.com</Text>
       </View>
       <View style={styles.scrollingMenu}>
-
-      <ScrollView contentContainerStyle={[{alignItems: 'center' }]}>
-      <CirculerImage 
-          source={ require('../assets/user.png') } 
-          size={ 121 } 
-          border={ 0 }
-          borderColor={ colors.gray }
-          />
+        <ScrollView style={{ width:'100%' }} contentContainerStyle={{ alignItems:'center' }}>
           <CirculerImage 
-          source={ require('../assets/user.png') } 
-          size={ 121 } 
-          border={ 0 }
-          borderColor={ colors.gray }
-          />
-          <CirculerImage 
-          source={ require('../assets/user.png') } 
-          size={ 121 } 
-          border={ 0 }
-          borderColor={ colors.gray }
-          />
-          <CirculerImage 
-          source={ require('../assets/user.png') } 
-          size={ 121 } 
-          border={ 0 }
-          borderColor={ colors.gray }
-          />
-          <CirculerImage 
-          source={ require('../assets/user.png') } 
-          size={ 121 } 
-          border={ 0 }
-          borderColor={ colors.gray }
-          />
-      </ScrollView>
+            source={ require('../assets/user.png') } 
+            size={ 121 } 
+            border={ 0 }
+            borderColor={ colors.gray }
+            />
+            <CirculerImage 
+            source={ require('../assets/user.png') } 
+            size={ 121 } 
+            border={ 0 }
+            borderColor={ colors.gray }
+            />
+            <CirculerImage 
+            source={ require('../assets/user.png') } 
+            size={ 121 } 
+            border={ 0 }
+            borderColor={ colors.gray }
+            />
+            <CirculerImage 
+            source={ require('../assets/user.png') } 
+            size={ 121 } 
+            border={ 0 }
+            borderColor={ colors.gray }
+            />
+            <CirculerImage 
+            source={ require('../assets/user.png') } 
+            size={ 121 } 
+            border={ 0 }
+            borderColor={ colors.gray }
+            />
+            <CirculerImage 
+            source={ require('../assets/user.png') } 
+            size={ 121 } 
+            border={ 0 }
+            borderColor={ colors.gray }
+            />
+            <CirculerImage 
+            source={ require('../assets/user.png') } 
+            size={ 121 } 
+            border={ 0 }
+            borderColor={ colors.gray }
+            />
+            <CirculerImage 
+            source={ require('../assets/user.png') } 
+            size={ 121 } 
+            border={ 0 }
+            borderColor={ colors.gray }
+            />
+        </ScrollView>
       </View>
     </View>
-  )
+    )
 }
 
 const styles = StyleSheet.create({
   screen:{
     flex:1,
-    // position:'relative'
+    position:'relative',
+    paddingBottom:100,
   },
   headdingContainer:{
-    // position:'absolute',
+    position:'absolute',
     height:100,
     width:'100%',
   },
   imageContainer:{
-    // position:'absolute',
+    position:'absolute',
     alignItems:'center',
     top:155,
     width:'100%',
   },
   userName:{
-    // position:'absolute',
+    position:'absolute',
     top:131,
     fontSize:12,
-    fontWeight:'600'
+    fontWeight:'600',
   },
   userEmail:{
-    // position:'absolute',
+    position:'absolute',
     top:154,
     fontSize:10,
     fontWeight:'600',
     color:colors.gray,
   },
   scrollingMenu:{
-    // position:'absolute',
     top:375,
-    width:'100%'
   }
 })
 
