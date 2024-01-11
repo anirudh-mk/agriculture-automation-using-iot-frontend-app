@@ -37,7 +37,7 @@ const App = () => {
         <Screen.Screen name="mainScreen" component={ MainScreen }/>
       </Screen.Navigator>
     </NavigationContainer>
-    <Toast ref={(ref) => Toast.setRef(ref)} />
+    {/* <Toast ref={(ref) => Toast.setRef(ref)} /> */}
     </>
   );
 };

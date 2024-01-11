@@ -1,42 +1,48 @@
-import { View, StyleSheet } from 'react-native'
+import { View, StyleSheet, FlatList } from 'react-native'
 import React from 'react'
 
-import HeaddingText from '../components/HeaddingText'
 import ImageCard from '../components/ImageCard'
 
 const HomeScreen = () => {
+
+  const data = [
+    { id:'1', farmName:'farm1', vegitableName:'apple', dayLeft:20},
+    {id:'2', farmName:'farm2', vegitableName:'orange', dayLeft:20},
+    {id:'3', farmName:'farm2', vegitableName:'orange', dayLeft:20},
+    {id:'4', farmName:'farm2', vegitableName:'orange', dayLeft:20},
+    {id:'5', farmName:'farm2', vegitableName:'orange', dayLeft:20}
+  ]
+
+  const renderItem = (item) => {
+    return(
+      <ImageCard 
+        banner={ require('../assets/tomato.png') }
+        farm={ item.item.farmName }
+        vegitable={ item.item.vegitableName }
+        daysLeft={ item.item.dayLeft + 'day left' }
+      />
+    )
+  }
+
   return (
     <View style={ styles.screen }>
-      <View style={ styles.headdingContainer }>
-        <HeaddingText text='Home'/>
-      </View>
-      <View style={ styles.cardContainer }>
-        <ImageCard
-          banner={ require('../assets/tomato.png') }
-          farm='Farm 1'
-          vegitable='tomato'
-          daysLeft='20 days left'
-        />
-        <ImageCard
-          banner={ require('../assets/tomato.png') }
-          farm='Farm 2'
-          vegitable='Onion'
-          daysLeft='3 days left'
-        />
-      </View>
+      <FlatList
+        style={{ width:'100%' }}
+        contentContainerStyle={{ alignItems:'center' }}
+        data={ data }
+        renderItem={ renderItem }
+        keyExtractor={ (item)=> item.id }
+      />
     </View>
   )
 }
 
 const styles = StyleSheet.create({
   screen:{
-    flex:1
-  },
-  cardContainer:{
-    alignItems:'center'
-  },
-  headdingContainer:{
-    height:100
+    flex:1,
+    alignItems:'center',
+    paddingTop:25,
+    paddingBottom:80,
   }
 })
 
