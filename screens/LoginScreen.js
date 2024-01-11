@@ -6,6 +6,7 @@ import colors from '../utils/Colors'
 import IconTextInput from '../components/IconTextInput'
 import IconPasswordInput from '../components/IconPasswordInput'
 import { useNavigation } from '@react-navigation/native';
+import Toast from 'react-native-toast-message';
 
 const LoginScreen = () => {
     
@@ -24,13 +25,25 @@ const LoginScreen = () => {
 
     const Handlelogin = () => {
         if(userName === 'anirudh' && password === '12607'){
+            Toast.show({
+                type: 'success',
+                text1: 'Success',
+                text2: 'Login successfully',
+            });
             navigation.navigate("mainScreen");
+        }
+        else{
+            Toast.show({
+                type: 'error',
+                text1: 'Error',
+                text2: 'Invalid username or password',
+            });
         }
     }
 
-
     return (
     <View style={ styles.screen }>
+        <Toast position='bottom'/>
         <View style={ styles.imageContainer }>
             <CirculerImage
                 source={ require('../assets/icon.png') }
