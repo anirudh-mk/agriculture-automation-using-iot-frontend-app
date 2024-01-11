@@ -5,7 +5,7 @@ import { TextInput } from 'react-native-gesture-handler'
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import colors from '../utils/Colors';
 
-const IconTextInput = ({ width, height, icon, placeholder, color, borderRadious }) => {
+const IconTextInput = ({ width, height, icon, placeholder, color, borderRadious, onChangeText }) => {
 
     const [divWidth, setDivWidth] = useState(0)
     const [eyeIcon, setEyeIcon] = useState(false)
@@ -40,6 +40,7 @@ const IconTextInput = ({ width, height, icon, placeholder, color, borderRadious 
             style={ [styles.textInput, { left:height, height:height, width:divWidth-(height*2)}] }
             placeholder={ placeholder }
             secureTextEntry={ eyeIcon?false:true }
+            onChangeText={ onChangeText }
         />
         <View style={ [styles.passwordContainer, { width:height }] }>
             <MaterialCommunityIcons 
