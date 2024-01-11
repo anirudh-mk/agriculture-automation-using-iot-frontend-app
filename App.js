@@ -28,12 +28,11 @@ const App = () => {
   return (
       <NavigationContainer>
         <Screen.Navigator 
-          initialRouteName="welcomeScreen"
+          initialRouteName="loginScreen"
           screenOptions={ screenOptions } 
         >
-        <Screen.Screen name="welcomeScreen" component={ WelcomeScreen } />
-        <Screen.Screen name="mainScreen" component={ MainScreen }/>
         <Screen.Screen name="loginScreen" component={ LoginScreen }/>
+        <Screen.Screen name="mainScreen" component={ MainScreen }/>
       </Screen.Navigator>
     </NavigationContainer>
   );
