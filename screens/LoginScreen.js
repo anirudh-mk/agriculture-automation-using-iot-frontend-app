@@ -1,13 +1,35 @@
 import { View, Text, StyleSheet } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import CirculerImage from '../components/CirculerImage'
 import TextButton from '../components/TextButton'
 import colors from '../utils/Colors'
 import IconTextInput from '../components/IconTextInput'
 import IconPasswordInput from '../components/IconPasswordInput'
+import { useNavigation } from '@react-navigation/native';
 
 const LoginScreen = () => {
-  return (
+    
+    const navigation = useNavigation();
+
+    const [userName, setUserName] = useState('')
+    const [password, setPassword] = useState('')
+
+    const handleUserName = (text) => {
+        setUserName(text)
+    }
+
+    const handlePassword = (text) => {
+        setPassword(text)
+    }
+
+    const Handlelogin = () => {
+        if(userName === 'anirudh' && password === '12607'){
+            navigation.navigate("mainScreen");
+        }
+    }
+
+
+    return (
     <View style={ styles.screen }>
         <View style={ styles.imageContainer }>
             <CirculerImage
@@ -25,6 +47,7 @@ const LoginScreen = () => {
                 icon='at'
                 borderRadious={ 10 }
                 placeholder='Username'
+                onChangeText={ handleUserName }
             />
         </View>
         <View style={ styles.passwordContainer }>
@@ -35,6 +58,7 @@ const LoginScreen = () => {
                 icon='lock'
                 borderRadious={ 10 }
                 placeholder='Password'
+                onChangeText={ handlePassword }
             />
         </View>
         <View style={ styles.forgotPassword }>
@@ -48,6 +72,7 @@ const LoginScreen = () => {
                 borderRadious={ 12 }
                 name='Login'
                 textColor={ colors.white }
+                onPress={ Handlelogin }
             />
         </View>
         <View style={ styles.orContainer }>
@@ -61,7 +86,6 @@ const LoginScreen = () => {
                 borderRadious={ 12 }
                 name='Login with Google'
                 textColor={ colors.gray }
-                onPress={()=>console.log('heoo')}
                 />
         </View>
     </View>
