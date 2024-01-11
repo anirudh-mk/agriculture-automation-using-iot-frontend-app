@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import Toast from 'react-native-toast-message';
 
 import MainScreen from './screens/MainScreen';
 import WelcomeScreen from './screens/WelcomeScreen';
@@ -26,6 +27,7 @@ const Screen = createStackNavigator();
 
 const App = () => {
   return (
+    <>
       <NavigationContainer>
         <Screen.Navigator 
           initialRouteName="loginScreen"
@@ -35,6 +37,8 @@ const App = () => {
         <Screen.Screen name="mainScreen" component={ MainScreen }/>
       </Screen.Navigator>
     </NavigationContainer>
+    <Toast ref={(ref) => Toast.setRef(ref)} />
+    </>
   );
 };
 
