@@ -5,10 +5,10 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import colors from '../utils/Colors';
 
-const IconTextInput = ({ width, height, icon, placeholder, color, borderRadious }) => {
+const IconTextInput = ({ width, height, icon, placeholder, color, borderRadious, onChangeText }) => {
 
     const [divWidth, setDivWidth] = useState(0)
-
+    
     const handleLayout = (event) => {
         const width = event.nativeEvent.layout.width
         setDivWidth(width)
@@ -35,6 +35,7 @@ const IconTextInput = ({ width, height, icon, placeholder, color, borderRadious 
     <TextInput
         style={ [styles.textInput, { left:height, height:height, width:divWidth-(height+10)}] }
         placeholder={ placeholder }
+        onChangeText={ onChangeText }
     />
     </View>
   )
