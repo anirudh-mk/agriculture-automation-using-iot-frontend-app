@@ -27,7 +27,7 @@ export default ImageCard
 
 const styles = StyleSheet.create({
     cardContainer:{
-        width:'95%',
+        width:390,
         height:202,
         borderRadius:10,
         position:'relative',
@@ -38,7 +38,8 @@ const styles = StyleSheet.create({
         shadowOffset: { width: 0, height: 4 },
         shadowOpacity: 1,
         shadowRadius: 10,
-        marginBottom:20
+        marginTop:10,
+        marginBottom:10
     },
     bannerImage:{
         position:'absolute',
