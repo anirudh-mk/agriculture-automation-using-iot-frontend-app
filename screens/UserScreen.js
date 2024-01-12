@@ -6,8 +6,21 @@ import CirculerImage from '../components/CirculerImage'
 import IconTextButton from '../components/IconTextButton'
 import colors from '../utils/Colors'
 import { ScrollView } from 'react-native-gesture-handler'
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useNavigation } from '@react-navigation/native';
 
 const UserScreen = () => {
+  const navigation = useNavigation();
+
+  const logout = async => {
+    try{
+      AsyncStorage.removeItem('isLogin')
+      navigation.navigate("loginScreen")
+    } catch(error){
+      console.log(error)
+    }
+  }
+
   return (
     <View style={styles.screen}>
       <View style={styles.headdingContainer}>
@@ -59,6 +72,7 @@ const UserScreen = () => {
           textPosition='right'
           marginBottom={ 20 }
           iconColor={ colors.tomato }
+          onPress={ logout }
         />
       </View>
     </View>
