@@ -2,6 +2,7 @@ import { View, Text, StyleSheet } from 'react-native'
 import React, { useState } from 'react'
 import CirculerImage from '../components/CirculerImage'
 import TextButton from '../components/TextButton'
+import IconTextButton from '../components/IconTextButton'
 import colors from '../utils/Colors'
 import IconTextInput from '../components/IconTextInput'
 import IconPasswordInput from '../components/IconPasswordInput'
@@ -92,13 +93,14 @@ const LoginScreen = () => {
             <Text style={ styles.orText }>OR</Text>
         </View>
         <View style={ styles.LoginWithGoogleContainer }>
-            <TextButton
+            <IconTextButton
                 color={ colors.white }
                 height={ 52 }
                 width='90%'
                 borderRadious={ 12 }
                 name='Login with Google'
                 textColor={ colors.gray }
+                icon='google'
                 />
         </View>
     </View>
