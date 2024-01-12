@@ -30,11 +30,12 @@ const App = () => {
     <>
       <NavigationContainer>
         <Screen.Navigator 
-          initialRouteName="loginScreen"
+          initialRouteName="welcomeScreen"
           screenOptions={ screenOptions } 
         >
         <Screen.Screen name="loginScreen" component={ LoginScreen }/>
         <Screen.Screen name="mainScreen" component={ MainScreen }/>
+        <Screen.Screen name="welcomeScreen" component={ WelcomeScreen }/>
       </Screen.Navigator>
     </NavigationContainer>
     {/* <Toast ref={(ref) => Toast.setRef(ref)} /> */}

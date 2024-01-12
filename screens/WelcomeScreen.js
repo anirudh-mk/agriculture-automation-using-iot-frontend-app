@@ -1,12 +1,41 @@
 import { View, Text, StyleSheet } from 'react-native'
-import React from 'react'
-
+import React, { useEffect } from 'react'
 import CirculerImage from '../components/CirculerImage'
 import TextButton from '../components/TextButton'
 
 import colors from '../utils/Colors';
 
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useNavigation } from '@react-navigation/native';
+
 const WelcomeScreen = () => {
+
+  const navigation = useNavigation()
+
+  useEffect(()=>{
+    const handleWelcome = async () => {
+      try{
+        const isFirstTime = await AsyncStorage.getItem('isFirstTime')
+        if (isFirstTime === 'true'){
+          navigation.navigate('loginScreen')
+        }
+      } catch(error){
+        console.log(error)
+      }
+    }
+
+    handleWelcome();
+  })
+
+  const handleNavigation = async () => {
+    try{
+      AsyncStorage.setItem('isFirstTime', 'true')
+      navigation.navigate('loginScreen')
+    } catch(error){
+      console.log(error);
+    }
+  }
+
   return (
     <View style={ styles.screen }>
       <View style={ styles.imageContainer }>
@@ -24,6 +53,7 @@ const WelcomeScreen = () => {
             borderRadious={ 20 }
             name='Get Started'
             textColor={ colors.secondery }
+            onPress={ handleNavigation }
           />
       </View>
       <View style={ styles.textContainer }>
