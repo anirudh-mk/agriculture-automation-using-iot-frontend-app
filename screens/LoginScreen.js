@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet } from 'react-native'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import CirculerImage from '../components/CirculerImage'
 import TextButton from '../components/TextButton'
 import IconTextButton from '../components/IconTextButton'
@@ -8,9 +8,25 @@ import IconTextInput from '../components/IconTextInput'
 import IconPasswordInput from '../components/IconPasswordInput'
 import { useNavigation } from '@react-navigation/native';
 import Toast from 'react-native-toast-message';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 const LoginScreen = () => {
     
+    useEffect(() => {
+        const checkLoginStatus = async () => {
+            try{
+                const isLogin = await AsyncStorage.getItem('isLogin')
+                if(isLogin == 'true'){
+                    navigation.navigate("mainScreen");
+                }
+            }catch(error){
+                console.log(error)
+            }
+        };
+        checkLoginStatus()
+    },[navigation])
+
     const navigation = useNavigation();
 
     const [userName, setUserName] = useState('')
@@ -31,6 +47,7 @@ const LoginScreen = () => {
                 text1: 'Success',
                 text2: 'Login successfully',
             });
+            setData();
             navigation.navigate("mainScreen");
         }
         else{
@@ -39,6 +56,27 @@ const LoginScreen = () => {
                 text1: 'Error',
                 text2: 'Invalid username or password',
             });
+        }
+    }
+
+    const setData = async () => {
+        try{
+            AsyncStorage.setItem('isLogin', 'true')
+            console.log('data saved')
+        } catch(error){
+            console.log(error)
+        }
+    }
+
+    const getData = async () => {
+        try{
+            const value = await AsyncStorage.getItem('isLogin')
+            if(value !== null)
+            {
+                console.log(value)
+            }
+        } catch(error){
+            console.log(error);
         }
     }
 
@@ -101,6 +139,7 @@ const LoginScreen = () => {
                 name='Login with Google'
                 textColor={ colors.gray }
                 icon='google'
+                onPress={ getData }
                 />
         </View>
     </View>
