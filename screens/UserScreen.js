@@ -3,7 +3,7 @@ import React from 'react'
 
 import HeaddingText from '../components/HeaddingText'
 import CirculerImage from '../components/CirculerImage'
-
+import IconTextButton from '../components/IconTextButton'
 import colors from '../utils/Colors'
 import { ScrollView } from 'react-native-gesture-handler'
 
@@ -23,57 +23,43 @@ const UserScreen = () => {
           <Text style={styles.userName}>Anirudh MK</Text>
           <Text style={styles.userEmail}>anirudhmk123@gmail.com</Text>
       </View>
-      <View style={styles.scrollingMenu}>
-        <ScrollView style={{ width:'100%' }} contentContainerStyle={{ alignItems:'center' }}>
-          <CirculerImage 
-            source={ require('../assets/user.png') } 
-            size={ 121 } 
-            border={ 0 }
-            borderColor={ colors.gray }
-            />
-            <CirculerImage 
-            source={ require('../assets/user.png') } 
-            size={ 121 } 
-            border={ 0 }
-            borderColor={ colors.gray }
-            />
-            <CirculerImage 
-            source={ require('../assets/user.png') } 
-            size={ 121 } 
-            border={ 0 }
-            borderColor={ colors.gray }
-            />
-            <CirculerImage 
-            source={ require('../assets/user.png') } 
-            size={ 121 } 
-            border={ 0 }
-            borderColor={ colors.gray }
-            />
-            <CirculerImage 
-            source={ require('../assets/user.png') } 
-            size={ 121 } 
-            border={ 0 }
-            borderColor={ colors.gray }
-            />
-            <CirculerImage 
-            source={ require('../assets/user.png') } 
-            size={ 121 } 
-            border={ 0 }
-            borderColor={ colors.gray }
-            />
-            <CirculerImage 
-            source={ require('../assets/user.png') } 
-            size={ 121 } 
-            border={ 0 }
-            borderColor={ colors.gray }
-            />
-            <CirculerImage 
-            source={ require('../assets/user.png') } 
-            size={ 121 } 
-            border={ 0 }
-            borderColor={ colors.gray }
-            />
-        </ScrollView>
+      <View style={styles.buttonContainer}>
+        <IconTextButton
+          color={ colors.white }
+          height={ 60 }
+          width='90%'
+          borderRadious={ 12 }
+          name='User'
+          textColor={ colors.black }
+          icon='at'
+          textPosition='right'
+          marginBottom={ 20 }
+        />
+        <IconTextButton
+          color={ colors.white }
+          height={ 60 }
+          width='90%'
+          borderRadious={ 12 }
+          name='Contact us'
+          textColor={ colors.black }
+          icon='message'
+          textPosition='right'
+          marginBottom={ 20 }
+        />
+      </View>
+      <View style={styles.logoutContainer}>
+        <IconTextButton
+          color={ colors.white }
+          height={ 60 }
+          width='90%'
+          borderRadious={ 12 }
+          name='Logout'
+          textColor={ colors.tomato }
+          icon='logout'
+          textPosition='right'
+          marginBottom={ 20 }
+          iconColor={ colors.tomato }
+        />
       </View>
     </View>
     )
@@ -109,8 +95,13 @@ const styles = StyleSheet.create({
     fontWeight:'600',
     color:colors.gray,
   },
-  scrollingMenu:{
+  buttonContainer:{
     top:375,
+    alignItems:'center'
+  },
+  logoutContainer:{
+    top:500,
+    alignItems:'center'
   }
 })
 
