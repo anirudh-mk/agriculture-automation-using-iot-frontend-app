@@ -1,7 +1,7 @@
 import { Text, TouchableHighlight, StyleSheet, View } from 'react-native'
 import React from 'react'
 
-const TextCard = ({ color, height, width, borderRadious, name, textColor, onPress, marginTop, marginBottom }) => {
+const TextCard = ({ color, height, width, borderRadious, mainHeadding, subHeadding, textColor, onPress, marginTop, marginBottom }) => {
   
   return (
     <TouchableHighlight style={{ 
@@ -16,8 +16,8 @@ const TextCard = ({ color, height, width, borderRadious, name, textColor, onPres
       onPress={ onPress }
     >
         <View>
-            <Text style={[styles.mainText,{fontSize:16, color:textColor}]}>{ name }</Text>
-            <Text style={[styles.subText,{fontSize:16, color:textColor}]}>{ name }</Text>
+            <Text style={[styles.mainText,{fontSize:16, color:textColor}]}>{ mainHeadding }</Text>
+            <Text style={[styles.subText,{fontSize:16, color:textColor}]}>{ subHeadding }</Text>
         </View>
     </TouchableHighlight>
   )
