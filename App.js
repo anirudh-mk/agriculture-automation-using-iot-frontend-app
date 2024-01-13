@@ -7,6 +7,7 @@ import Toast from 'react-native-toast-message';
 import MainScreen from './screens/MainScreen';
 import WelcomeScreen from './screens/WelcomeScreen';
 import LoginScreen from './screens/LoginScreen';
+import FarmScreen from './screens/FarmScreen';
 
 const screenOptions = {
   tabBarShowLabel:false,
@@ -36,6 +37,7 @@ const App = () => {
         <Screen.Screen name="loginScreen" component={ LoginScreen }/>
         <Screen.Screen name="mainScreen" component={ MainScreen }/>
         <Screen.Screen name="welcomeScreen" component={ WelcomeScreen }/>
+        <Screen.Screen name="farmScreen" component={ FarmScreen }/>
       </Screen.Navigator>
     </NavigationContainer>
     {/* <Toast ref={(ref) => Toast.setRef(ref)} /> */}
