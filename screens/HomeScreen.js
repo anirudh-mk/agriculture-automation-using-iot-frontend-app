@@ -3,7 +3,7 @@ import React from 'react'
 
 import ImageCard from '../components/ImageCard'
 
-import data from './HomeScreen/HomeScreenSupportFile'
+import { homeScreenFarmData } from '../utils/SupportiveDataFile'
 
 const HomeScreen = () => {
 
@@ -23,7 +23,7 @@ const HomeScreen = () => {
       <FlatList
         style={{ width:'100%' }}
         contentContainerStyle={{ alignItems:'center' }}
-        data={ data }
+        data={ homeScreenFarmData }
         renderItem={ renderItem }
         keyExtractor={ (item)=> item.id }
       />
