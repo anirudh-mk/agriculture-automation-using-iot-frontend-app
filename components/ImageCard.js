@@ -2,16 +2,12 @@ import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 import colors from '../utils/Colors';
 
-const ImageCard = ({ farm, vegitable, daysLeft, banner}) => {
-
-  const handlePress = () => {
-    console.log('clicked');
-  }
+const ImageCard = ({ farm, vegitable, daysLeft, banner, onPress }) => {
 
   return (
       <TouchableOpacity 
         style={ styles.cardContainer } 
-        onPress={ handlePress }
+        onPress={ onPress }
       >
         <Image style={ styles.bannerImage } source={ banner }/>
         <View style={ styles.bottomContainer }>
