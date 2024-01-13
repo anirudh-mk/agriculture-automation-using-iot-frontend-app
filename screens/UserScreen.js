@@ -1,13 +1,13 @@
 import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
 
-import HeaddingText from '../components/HeaddingText'
-import CirculerImage from '../components/CirculerImage'
-import IconTextButton from '../components/IconTextButton'
-import colors from '../utils/Colors'
-import { ScrollView } from 'react-native-gesture-handler'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
+
+import IconTextButton from '../components/IconTextButton'
+import HeaddingText from '../components/HeaddingText'
+import CirculerImage from '../components/CirculerImage'
+import colors from '../utils/Colors'
 
 const UserScreen = () => {
   const navigation = useNavigation();
