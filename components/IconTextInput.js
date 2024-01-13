@@ -1,4 +1,5 @@
 import { View, StyleSheet } from 'react-native'
+
 import React, { useState } from 'react'
 import { TextInput } from 'react-native-gesture-handler'
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -15,14 +16,12 @@ const IconTextInput = ({ width, height, icon, placeholder, color, borderRadious,
     }
 
     return (
-    <View style={{ 
+    <View style={[styles.screen, { 
         width:width, 
         height:height,
         backgroundColor:color,
         borderRadius:borderRadious,
-        flexDirection:'row',
-        position:'relative'
-        }}
+        }] }
         onLayout={handleLayout}
     >
     <View style={ [styles.iconContainer, { width:height }] }>
@@ -33,7 +32,10 @@ const IconTextInput = ({ width, height, icon, placeholder, color, borderRadious,
         />
     </View>
     <TextInput
-        style={ [styles.textInput, { left:height, height:height, width:divWidth-(height+10)}] }
+        style={ [styles.textInput, { 
+            left:height, 
+            height:height, 
+            width:divWidth-(height+10)}] }
         placeholder={ placeholder }
         onChangeText={ onChangeText }
     />
@@ -42,6 +44,10 @@ const IconTextInput = ({ width, height, icon, placeholder, color, borderRadious,
 }
 
 const styles = StyleSheet.create({
+    screen:{
+        flexDirection:'row',
+        position:'relative'
+    },
     iconContainer:{
         position:'absolute',
         alignItems:'center',
