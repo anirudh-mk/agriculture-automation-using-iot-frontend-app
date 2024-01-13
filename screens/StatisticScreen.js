@@ -2,22 +2,35 @@ import { View, Text, StyleSheet, FlatList } from 'react-native'
 import React from 'react'
 import HeaddingText from '../components/HeaddingText'
 import colors from '../utils/Colors'
-import data from './HomeScreen/HomeScreenSupportFile'
+import { lastCropsDetails, pieCartData } from '../utils/SupportiveDataFile'
 import { Dimensions } from "react-native";
 import TextCard from '../components/TextCard'
+import { PieChart } from "react-native-chart-kit";
 
 const StatisticScreen = () => {
 
-const screenWidth = Dimensions.get("window").width;
+  const screenWidth = Dimensions.get("window").width;
 
-  const cardContainer = () => {
+  const chartConfig = {
+    backgroundGradientFrom: "#1E2923",
+    backgroundGradientFromOpacity: 0,
+    backgroundGradientTo: "#08130D",
+    backgroundGradientToOpacity: 0.5,
+    color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`,
+    strokeWidth: 2, // optional, default 3
+    barPercentage: 0.5,
+    useShadowColorFromDataset: false // optional
+  };
+
+  const cardContainer = (item) => {
     return(
       <TextCard
         color={ colors.white }
         height={ 60 }
         width={ screenWidth-30 }
         borderRadious={ 12 }
-        name='Login'
+        mainHeadding={ item.item.crop}
+        subHeadding={item.item.date}
         textColor={ colors.black }
         marginBottom={8}
         marginTop={8}
@@ -34,7 +47,17 @@ const screenWidth = Dimensions.get("window").width;
         <Text style={styles.HeaddingText}>Top Conrtibuterd</Text>
       </View>
       <View style={styles.graphContainer}>
-
+        <PieChart
+          data={pieCartData}
+          width={screenWidth}
+          height={250}
+          chartConfig={chartConfig}
+          accessor={"population"}
+          backgroundColor={"transparent"}
+          center={[(screenWidth/2)-125, 0]}
+          hasLegend={false}
+          absolute
+        />
       </View>
       <View>
         <Text style={styles.HeaddingText}>Last Crops</Text>
@@ -43,7 +66,7 @@ const screenWidth = Dimensions.get("window").width;
         <FlatList
           style={{width:'100%'}}
           contentContainerStyle={{alignItems:'center'}}
-          data={data}
+          data={lastCropsDetails}
           renderItem={ cardContainer }
           keyExtractor={(item)=>item.id}
         />
@@ -74,12 +97,11 @@ const styles = StyleSheet.create({
   graphContainer:{
     width:'100%',
     height:250,
-    backgroundColor:'green',
   },
   scrollingContainer:{
     top:50,
     width:'100%',
-    height:285,
+    height:315,
   }
 })
 
