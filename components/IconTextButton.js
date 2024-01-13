@@ -1,43 +1,61 @@
-import { Text, TouchableHighlight, View } from 'react-native'
+import { Text, TouchableHighlight, View, StyleSheet} from 'react-native'
 import React from 'react'
+
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+
 import colors from '../utils/Colors';
+
 const TextButton = ({ color, height, width, borderRadious, name, textColor, onPress, icon, textPosition, marginBottom, iconColor }) => {
   
   return (
-    <TouchableHighlight style={{ 
-      justifyContent:'center',
+    <TouchableHighlight style={ [styles.screen, { 
       width:width, 
       height:height, 
       borderRadius:borderRadious, 
       backgroundColor:color,
-      position:'relative',
       marginBottom:marginBottom?marginBottom:0,
-      }}
+      }] }
       onPress={ onPress }
     >
-        <View style={{position:'absolute', width:'100%', flexDirection:'row'}}>
-            <MaterialCommunityIcons
-                name={ icon }
-                size={ 20 }
-                style={{left:12, position:'absolute'}}
-                color={ iconColor?iconColor:colors.black }
-            />
-            <Text style={{
-            fontSize:16,
-            fontWeight:'600',
+      <View style={styles.iconContainer}>
+          <MaterialCommunityIcons
+            style={styles.iconStyle}
+            name={ icon }
+            size={ 20 }
+            color={ iconColor?iconColor:colors.black }
+          />
+          <Text style={[styles.text,{
             color:textColor,
             textAlign:textPosition?textPosition:'center',
-            paddingRight:20,
-            paddingLeft:20,
-            width:'100%',
-            }}
-            >
-            { name }
-            </Text>
-        </View>
+          }]}
+          >
+          { name }
+          </Text>
+      </View>
     </TouchableHighlight>
   )
 }
 
+const styles = StyleSheet.create({
+  screen:{
+    position:'relative',
+    justifyContent:'center',
+  },
+  text:{
+    width:'100%',
+    paddingRight:20,
+    paddingLeft:20,
+    fontSize:16,
+    fontWeight:'600',
+  },
+  iconContainer:{
+    position:'absolute', 
+    width:'100%', 
+    flexDirection:'row',
+  },
+  iconStyle:{
+    position:'absolute',
+    left:12, 
+  }
+})
 export default TextButton
