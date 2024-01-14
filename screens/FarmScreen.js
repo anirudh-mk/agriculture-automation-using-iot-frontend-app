@@ -2,6 +2,7 @@ import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
 import HeaddingText from '../components/HeaddingText'
 import { ScrollView } from 'react-native-gesture-handler'
+import DetailsCard from '../components/DetailsCard'
 
 const FarmScreen = ({ farmName, }) => {
   return (
@@ -11,6 +12,12 @@ const FarmScreen = ({ farmName, }) => {
         </View>
         <ScrollView style={styles.scrollView}>
           <Text style={styles.subHeadding}>Hello</Text>
+          <View style={styles.deailsCardContainer}>
+            <DetailsCard
+              marginLeft={18}
+              marginRight={18}
+            />
+          </View>
         </ScrollView>
         <View style={styles.new}></View>
     </View>
@@ -36,7 +43,10 @@ const styles = StyleSheet.create({
     padding:20,
     fontSize:20,
     fontWeight:'600'
-  }
+  },
+  deailsCardContainer:{
+    alignItems:'center'
+  },
 })
 
 export default FarmScreen
