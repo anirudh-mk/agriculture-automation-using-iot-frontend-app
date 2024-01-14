@@ -1,5 +1,5 @@
-import { View, Text, StyleSheet } from 'react-native'
-import React, { useEffect } from 'react'
+import { View, Text, Image, StyleSheet } from 'react-native'
+import React, { useEffect, useState } from 'react'
 import CirculerImage from '../components/CirculerImage'
 import TextButton from '../components/TextButton'
 
@@ -11,21 +11,29 @@ import { useNavigation } from '@react-navigation/native';
 const WelcomeScreen = () => {
 
   const navigation = useNavigation()
+  const [loading, setLoading] = useState(false)
 
   useEffect(()=>{
     const handleWelcome = async () => {
+      setLoading(true)
       try{
         const isFirstTime = await AsyncStorage.getItem('isFirstTime')
-        if (isFirstTime === 'true'){
+        const isLogin = await AsyncStorage.getItem('isLogin')
+        
+        if (isLogin === 'true'){
+          navigation.navigate('mainScreen')
+        }
+        else if (isFirstTime === 'true'){
           navigation.navigate('loginScreen')
         }
       } catch(error){
         console.log(error)
+      }finally{
+        setLoading(false)
       }
     }
-
     handleWelcome();
-  })
+  },[navigation])
 
   const handleNavigation = async () => {
     try{
@@ -34,6 +42,12 @@ const WelcomeScreen = () => {
     } catch(error){
       console.log(error);
     }
+  }
+
+  if(loading){
+    return(
+      <Image source={require('../assets/splash.png')}></Image>
+    )
   }
 
   return (
