@@ -1,11 +1,19 @@
 import { View, StyleSheet, FlatList } from 'react-native'
 import React from 'react'
 
+import { useNavigation } from '@react-navigation/native'
+
 import ImageCard from '../components/ImageCard'
 
 import { homeScreenFarmData } from '../utils/SupportiveDataFile'
 
 const HomeScreen = () => {
+
+  const navigation = useNavigation();
+
+  const navigate = () => {
+    navigation.navigate('farmScreen')
+  }
 
   const renderItem = (item) => {
     return(
@@ -14,6 +22,7 @@ const HomeScreen = () => {
         farm={ item.item.farmName }
         vegitable={ item.item.vegitableName }
         daysLeft={ item.item.dayLeft + 'day left' }
+        onPress={ navigate }
       />
     )
   }
