@@ -1,17 +1,24 @@
 import { View, Text, StyleSheet } from 'react-native'
 import React, { useState, useEffect } from 'react'
-import CirculerImage from '../components/CirculerImage'
-import TextButton from '../components/TextButton'
-import IconTextButton from '../components/IconTextButton'
-import colors from '../utils/Colors'
-import IconTextInput from '../components/IconTextInput'
-import IconPasswordInput from '../components/IconPasswordInput'
 import { useNavigation } from '@react-navigation/native';
+
 import Toast from 'react-native-toast-message';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+import CirculerImage from '../components/CirculerImage'
+import IconPasswordInput from '../components/IconPasswordInput'
+import IconTextButton from '../components/IconTextButton'
+import IconTextInput from '../components/IconTextInput'
+import TextButton from '../components/TextButton'
+
+import colors from '../utils/Colors'
 
 const LoginScreen = () => {
+
+    const navigation = useNavigation();
+
+    const [userName, setUserName] = useState('')
+    const [password, setPassword] = useState('')
     
     useEffect(() => {
         const checkLoginStatus = async () => {
@@ -26,11 +33,6 @@ const LoginScreen = () => {
         };
         checkLoginStatus()
     },[navigation])
-
-    const navigation = useNavigation();
-
-    const [userName, setUserName] = useState('')
-    const [password, setPassword] = useState('')
 
     const handleUserName = (text) => {
         setUserName(text)
@@ -88,7 +90,6 @@ const LoginScreen = () => {
                 source={ require('../assets/icon.png') }
                 size={ 330 }
                 border={ 0 }
-
             />
         </View>
         <View style={ styles.userNameContainer }>
