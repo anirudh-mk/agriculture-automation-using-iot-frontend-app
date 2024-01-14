@@ -16,6 +16,8 @@ const FarmScreen = ({ farmName, }) => {
             <DetailsCard
               marginLeft={18}
               marginRight={18}
+              borderRadius={10}
+              vagiatableName='Onion'
             />
           </View>
         </ScrollView>
