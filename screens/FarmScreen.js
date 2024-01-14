@@ -29,16 +29,13 @@ const FarmScreen = ({ farmName, }) => {
 const styles = StyleSheet.create({
   screen:{
     flex:1,
-    backgroundColor:'green'
   },
   headdingContainer:{
-    backgroundColor:'tomato',
     height:100,
     width:'100%'
   },
   scrollView:{
     width:'100%',
-    backgroundColor:'yellow',
     height:100,
   },
   subHeadding:{
