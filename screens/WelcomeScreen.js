@@ -12,10 +12,10 @@ const WelcomeScreen = () => {
 
   const navigation = useNavigation()
   const [loading, setLoading] = useState(false)
+  const [shouldRenderLogin, setShouldRenderLogin] = useState(false)
 
   useEffect(()=>{
     const handleWelcome = async () => {
-      setLoading(true)
       try{
         const isFirstTime = await AsyncStorage.getItem('isFirstTime')
         const isLogin = await AsyncStorage.getItem('isLogin')
@@ -24,7 +24,7 @@ const WelcomeScreen = () => {
           navigation.navigate('mainScreen')
         }
         else if (isFirstTime === 'true'){
-          navigation.navigate('loginScreen')
+          setShouldRenderLogin(true)
         }
       } catch(error){
         console.log(error)
@@ -50,31 +50,33 @@ const WelcomeScreen = () => {
     )
   }
 
-  return (
-    <View style={ styles.screen }>
-      <View style={ styles.imageContainer }>
-        <CirculerImage 
-          source={ require('../assets/icon.png') }
-          size={ 330 }
-          border={ 0 }
-          />
+  if(shouldRenderLogin){
+    return (
+      <View style={ styles.screen }>
+        <View style={ styles.imageContainer }>
+          <CirculerImage 
+            source={ require('../assets/icon.png') }
+            size={ 330 }
+            border={ 0 }
+            />
+        </View>
+        <View style={ styles.buttonContainer }>
+          <TextButton
+              width={ 300 }
+              height={ 59 }
+              color='#fff'
+              borderRadious={ 20 }
+              name='Get Started'
+              textColor={ colors.secondery }
+              onPress={ handleNavigation }
+            />
+        </View>
+        <View style={ styles.textContainer }>
+          <Text style={ styles.text }>Farming simplified Automated</Text>
+        </View>
       </View>
-      <View style={ styles.buttonContainer }>
-        <TextButton
-            width={ 300 }
-            height={ 59 }
-            color='#fff'
-            borderRadious={ 20 }
-            name='Get Started'
-            textColor={ colors.secondery }
-            onPress={ handleNavigation }
-          />
-      </View>
-      <View style={ styles.textContainer }>
-        <Text style={ styles.text }>Farming simplified Automated</Text>
-      </View>
-    </View>
-  )
+    )
+  }
 }
 
 const styles = StyleSheet.create({
