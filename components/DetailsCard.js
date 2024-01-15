@@ -27,6 +27,8 @@ const DetailsCard = ({ marginLeft, marginRight, borderRadius, vagiatableName }) 
                 style={styles.icon}
             />
             <Text style={styles.subHeadding}>20 day left</Text>
+            <View style={styles.grapContainer}>
+            </View>
         </View>
     </TouchableHighlight>
   )
@@ -35,7 +37,6 @@ const DetailsCard = ({ marginLeft, marginRight, borderRadius, vagiatableName }) 
 const styles = StyleSheet.create({
     card:{
         height:182,
-        // backgroundColor:'tomato'
         borderWidth: 1,
         borderColor: 'rgba(10, 109, 247, 0.19)',
         backgroundColor: 'rgba(250, 250, 250, 0.00)',
@@ -62,6 +63,15 @@ const styles = StyleSheet.create({
         fontSize:10,
         color:colors.gray
 
+    },
+    grapContainer:{
+        position:'absolute',
+        backgroundColor:'tomato',
+        top:80,
+        width:'100%',
+        height:100,
+        flex:1,
+        flexDirection:'row'
     }
 })
 
