@@ -5,11 +5,38 @@ import { Dimensions } from 'react-native'
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons'
 import { TouchableHighlight } from 'react-native-gesture-handler'
 import colors from '../utils/Colors'
-
+import {
+  LineChart,
+} from "react-native-chart-kit";
 
 const DetailsCard = ({ marginLeft, marginRight, borderRadius, vagiatableName }) => {
 
     const { width, height } = Dimensions.get('window')
+
+    const screenWidth = Dimensions.get("window").width;
+
+    const chartConfig = {
+      backgroundGradientFrom: "#1E2923",
+      backgroundGradientFromOpacity: 0,
+      backgroundGradientTo: "#08130D",
+      backgroundGradientToOpacity: 0.5,
+      color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`,
+      strokeWidth: 2, // optional, default 3
+      barPercentage: 0.5,
+      useShadowColorFromDataset: false // optional
+    };
+
+    const data = {
+      labels: ["January", "February", "March", "April", "May", "June"],
+      datasets: [
+        {
+          data: [20, 45, 28, 80, 99, 43],
+          color: (opacity = 1) => `rgba(134, 65, 244, ${opacity})`, // optional
+          strokeWidth: 2 // optional
+        }
+      ],
+      legend: ["Rainy Days"] // optional
+    };
 
     return (
     <TouchableHighlight style={[
@@ -19,7 +46,14 @@ const DetailsCard = ({ marginLeft, marginRight, borderRadius, vagiatableName }) 
             borderRadius:borderRadius,
              }]}>
         <View>
-    
+          <LineChart
+            data={data}
+            width={screenWidth}
+            height={256}
+            verticalLabelRotation={30}
+            chartConfig={chartConfig}
+            bezier
+          />
         </View>
     </TouchableHighlight>
   )
