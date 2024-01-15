@@ -21,6 +21,7 @@ const FarmScreen = ({ farmName, }) => {
               vagiatableName='Onion'
             />
           </View>
+          <Text style={styles.subHeadding}>Hello</Text>
           <View style={styles.deailsCardContainer}>
             <GraphCard
               marginLeft={18}
