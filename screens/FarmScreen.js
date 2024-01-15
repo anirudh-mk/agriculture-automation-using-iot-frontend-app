@@ -3,6 +3,7 @@ import React from 'react'
 import HeaddingText from '../components/HeaddingText'
 import { ScrollView } from 'react-native-gesture-handler'
 import DetailsCard from '../components/DetailsCard'
+import GraphCard from '../components/GraphCard'
 
 const FarmScreen = ({ farmName, }) => {
   return (
@@ -14,6 +15,14 @@ const FarmScreen = ({ farmName, }) => {
           <Text style={styles.subHeadding}>Hello</Text>
           <View style={styles.deailsCardContainer}>
             <DetailsCard
+              marginLeft={18}
+              marginRight={18}
+              borderRadius={10}
+              vagiatableName='Onion'
+            />
+          </View>
+          <View style={styles.deailsCardContainer}>
+            <GraphCard
               marginLeft={18}
               marginRight={18}
               borderRadius={10}
