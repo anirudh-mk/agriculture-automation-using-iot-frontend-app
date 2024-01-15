@@ -12,7 +12,7 @@ const FarmScreen = ({ farmName, }) => {
             <HeaddingText style={styles.headdingText} text='Farm 1'/>
         </View>
         <ScrollView style={styles.scrollView}>
-          <Text style={styles.subHeadding}>Hello</Text>
+          <Text style={styles.subHeadding}>NPK</Text>
           <View style={styles.deailsCardContainer}>
             <DetailsCard
               marginLeft={18}
@@ -21,7 +21,16 @@ const FarmScreen = ({ farmName, }) => {
               vagiatableName='Onion'
             />
           </View>
-          <Text style={styles.subHeadding}>Hello</Text>
+          <Text style={styles.subHeadding}>Live Data</Text>
+          <View style={styles.deailsCardContainer}>
+            <GraphCard
+              marginLeft={18}
+              marginRight={18}
+              borderRadius={10}
+              vagiatableName='Onion'
+            />
+          </View>
+          <Text style={styles.subHeadding}>Market Prediction</Text>
           <View style={styles.deailsCardContainer}>
             <GraphCard
               marginLeft={18}
