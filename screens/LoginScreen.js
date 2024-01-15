@@ -14,74 +14,66 @@ import TextButton from '../components/TextButton'
 import colors from '../utils/Colors'
 
 const LoginScreen = () => {
-
     const navigation = useNavigation();
-
-    const [userName, setUserName] = useState('')
-    const [password, setPassword] = useState('')
-    
+  
+    const [userName, setUserName] = useState('');
+    const [password, setPassword] = useState('');
+  
     useEffect(() => {
-        const checkLoginStatus = async () => {
-            try{
-                const isLogin = await AsyncStorage.getItem('isLogin')
-                if(isLogin == 'true'){
-                    navigation.navigate("mainScreen");
-                }
-            }catch(error){
-                console.log(error)
-            }
-        };
-        checkLoginStatus()
-    },[navigation])
-
+      const checkLoginStatus = async () => {
+        try {
+          const isLogin = await AsyncStorage.getItem('isLogin');
+          if (isLogin === 'true') {
+            navigation.reset({
+              index: 0,
+              routes: [{ name: 'mainScreen' }],
+            });
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      };
+      checkLoginStatus();
+    }, [navigation]);
+  
     const handleUserName = (text) => {
-        setUserName(text)
-    }
-
+      setUserName(text);
+    };
+  
     const handlePassword = (text) => {
-        setPassword(text)
-    }
-
-    const Handlelogin = () => {
-        if(userName === 'anirudh' && password === '12607'){
-            Toast.show({
-                type: 'success',
-                text1: 'Success',
-                text2: 'Login successfully',
-            });
-            setData();
-            navigation.navigate("mainScreen");
-        }
-        else{
-            Toast.show({
-                type: 'error',
-                text1: 'Error',
-                text2: 'Invalid username or password',
-            });
-        }
-    }
-
+      setPassword(text);
+    };
+  
+    const handleLogin = () => {
+      if (userName === 'anirudh' && password === '12607') {
+        Toast.show({
+          type: 'success',
+          text1: 'Success',
+          text2: 'Login successfully',
+        });
+        setData();
+        navigation.reset({
+          index: 0,
+          routes: [{ name: 'mainScreen' }],
+        });
+      } else {
+        Toast.show({
+          type: 'error',
+          text1: 'Error',
+          text2: 'Invalid username or password',
+        });
+      }
+    };
+  
     const setData = async () => {
-        try{
-            AsyncStorage.setItem('isLogin', 'true')
-            console.log('data saved')
-        } catch(error){
-            console.log(error)
-        }
-    }
-
-    const getData = async () => {
-        try{
-            const value = await AsyncStorage.getItem('isLogin')
-            if(value !== null)
-            {
-                console.log(value)
-            }
-        } catch(error){
-            console.log(error);
-        }
-    }
-
+      try {
+        await AsyncStorage.setItem('isLogin', 'true');
+        console.log('data saved');
+      } catch (error) {
+        console.log(error);
+      }
+    };
+  
     return (
     <View style={ styles.screen }>
         <Toast position='bottom'/>
@@ -125,7 +117,7 @@ const LoginScreen = () => {
                 borderRadious={ 12 }
                 name='Login'
                 textColor={ colors.white }
-                onPress={ Handlelogin }
+                onPress={ handleLogin }
             />
         </View>
         <View style={ styles.orContainer }>
@@ -140,7 +132,7 @@ const LoginScreen = () => {
                 name='Login with Google'
                 textColor={ colors.gray }
                 icon='google'
-                onPress={ getData }
+                // onPress={ getData }
                 />
         </View>
     </View>
