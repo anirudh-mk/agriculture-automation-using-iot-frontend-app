@@ -34,9 +34,9 @@ const App = () => {
           initialRouteName="welcomeScreen"
           screenOptions={ screenOptions } 
         >
+        <Screen.Screen name="welcomeScreen" component={ WelcomeScreen }/>
         <Screen.Screen name="loginScreen" component={ LoginScreen }/>
         <Screen.Screen name="mainScreen" component={ MainScreen }/>
-        <Screen.Screen name="welcomeScreen" component={ WelcomeScreen }/>
         <Screen.Screen name="farmScreen" component={ FarmScreen }/>
       </Screen.Navigator>
     </NavigationContainer>
