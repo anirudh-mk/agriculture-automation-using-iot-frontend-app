@@ -27,7 +27,7 @@ const DetailsCard = ({ marginLeft, marginRight, borderRadius, vagiatableName }) 
 
 const styles = StyleSheet.create({
     card:{
-        height:182,
+        height:233,
         borderWidth: 1,
         borderColor: 'rgba(10, 109, 247, 0.19)',
         backgroundColor: 'rgba(250, 250, 250, 0.00)',
