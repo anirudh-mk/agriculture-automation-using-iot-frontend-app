@@ -37,15 +37,8 @@ const WelcomeScreen = () => {
   //   handleWelcome();
   // },[navigation])
 
-  const handleNavigation = async () => {
-    navigation
-      .navigate("loginScreen")
-      .then(() => {
-        setNavigationError(false);
-      })
-      .catch((error) => {
-        setNavigationError(true);
-      });
+  const handleNavigation = () => {
+    navigation.navigate("loginScreen");
   };
 
   if (navigationError) {
@@ -91,23 +84,31 @@ const WelcomeScreen = () => {
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    position: "relative",
-    alignItems: "center",
+    flexDirection: "column",
     backgroundColor:
       "linear-gradient(185deg, #127F00 3.84%, rgba(28, 190, 25, 0.81) 97.65%)",
     boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
   },
   imageContainer: {
-    position: "absolute",
-    top: 88,
+    display: "flex",
+    flex: 1,
+    flexDirection: "row",
+    width: "100%",
+    justifyContent: "center",
+    marginTop: 88,
   },
   buttonContainer: {
-    position: "absolute",
-    top: 609,
+    display: "flex",
+    width: "100%",
+    height: "20%",
+    alignItems: "center",
+    justifyContent: "center",
   },
   textContainer: {
-    position: "absolute",
-    top: 686,
+    display: "flex",
+    width: "100%",
+    alignItems: "center",
+    marginBottom: 50,
   },
   text: {
     fontSize: 20,
