@@ -91,11 +91,9 @@ const styles = StyleSheet.create({
   headdingText: {
     fontSize: 28,
     fontWeight: "600",
-    color: colors.primary,
   },
   imageContainer: {
     width: "100%",
-
     paddingBottom: 20,
     alignItems: "center",
   },

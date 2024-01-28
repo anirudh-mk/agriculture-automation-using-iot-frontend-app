@@ -1,14 +1,12 @@
-import { View, Text, StyleSheet, FlatList } from 'react-native'
-import React from 'react'
-import HeaddingText from '../components/HeaddingText'
-import colors from '../utils/Colors'
-import { lastCropsDetails, pieCartData } from '../utils/SupportiveDataFile'
+import { View, Text, StyleSheet, FlatList } from "react-native";
+import React from "react";
+import colors from "../utils/Colors";
+import { lastCropsDetails, pieCartData } from "../utils/SupportiveDataFile";
 import { Dimensions } from "react-native";
-import TextCard from '../components/TextCard'
+import TextCard from "../components/TextCard";
 import { PieChart } from "react-native-chart-kit";
 
 const StatisticScreen = () => {
-
   const screenWidth = Dimensions.get("window").width;
 
   const chartConfig = {
@@ -17,34 +15,34 @@ const StatisticScreen = () => {
     backgroundGradientTo: "#08130D",
     backgroundGradientToOpacity: 0.5,
     color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`,
-    strokeWidth: 2, // optional, default 3
+    strokeWidth: 2,
     barPercentage: 0.5,
-    useShadowColorFromDataset: false // optional
+    useShadowColorFromDataset: false,
   };
 
   const cardContainer = (item) => {
-    return(
+    return (
       <TextCard
-        color={ colors.white }
-        height={ 60 }
-        width={ screenWidth-30 }
-        borderRadious={ 12 }
-        mainHeadding={ item.item.crop}
+        color={colors.white}
+        height={60}
+        width={screenWidth - 30}
+        borderRadious={12}
+        mainHeadding={item.item.crop}
         subHeadding={item.item.date}
-        textColor={ colors.black }
+        textColor={colors.black}
         marginBottom={8}
         marginTop={8}
       />
-    )
-  }
+    );
+  };
 
   return (
     <View style={styles.screen}>
       <View style={styles.headdingContainer}>
-        <HeaddingText text='Statistics'/>
+        <Text style={styles.headdingText}>Statistics</Text>
       </View>
-      <View style={styles.headdingTextContainer}>
-        <Text style={styles.HeaddingText}>Top Conrtibuterd</Text>
+      <View style={styles.subHeaddingContainer}>
+        <Text style={styles.subHeaddingText}>Top Conrtibuterd</Text>
       </View>
       <View style={styles.graphContainer}>
         <PieChart
@@ -54,55 +52,65 @@ const StatisticScreen = () => {
           chartConfig={chartConfig}
           accessor={"population"}
           backgroundColor={"transparent"}
-          center={[(screenWidth/2)-125, 0]}
+          center={[screenWidth / 2 - 125, 0]}
           hasLegend={false}
           absolute
         />
       </View>
-      <View>
-        <Text style={styles.HeaddingText}>Last Crops</Text>
+      <View style={styles.subHeaddingContainer}>
+        <Text style={styles.subHeaddingText}>Last Crops</Text>
       </View>
       <View style={styles.scrollingContainer}>
         <FlatList
-          style={{width:'100%'}}
-          contentContainerStyle={{alignItems:'center'}}
+          style={{ width: "100%" }}
+          contentContainerStyle={{ alignItems: "center" }}
           data={lastCropsDetails}
-          renderItem={ cardContainer }
-          keyExtractor={(item)=>item.id}
+          renderItem={cardContainer}
+          keyExtractor={(item) => item.id}
         />
       </View>
     </View>
-  )
-}
+  );
+};
 
 const styles = StyleSheet.create({
-  screen:{
-    width:'100%',
-    flex:1,
+  screen: {
+    display: "flex",
+    flex: 1,
+    width: "100%",
+    paddingTop: 24,
   },
-  headdingContainer:{
-    width:'100%',
-    height:100,
+  headdingContainer: {
+    display: "flex",
+    justifyContent: "center",
+    height: 80,
+    width: "100%",
+    paddingLeft: 20,
   },
-  headdingTextContainer:{
-    width:'100%',
-    height:50,
+  headdingText: {
+    fontSize: 28,
+    fontWeight: "400",
   },
-  HeaddingText:{
-    position:'absolute',
-    left:19,
-    fontSize:20,
-    top:10,
+  subHeaddingContainer: {
+    display: "flex",
+    justifyContent: "center",
+    width: "100%",
+    height: 50,
+    paddingLeft: 20,
   },
-  graphContainer:{
-    width:'100%',
-    height:250,
+  subHeaddingText: {
+    fontSize: 20,
+    fontWeight: "400",
   },
-  scrollingContainer:{
-    top:50,
-    width:'100%',
-    height:315,
-  }
-})
+  graphContainer: {
+    width: "100%",
+    height: 250,
+  },
+  scrollingContainer: {
+    display: "flex",
+    flex: 1,
+    width: "100%",
+  },
+});
 
-export default StatisticScreen
+export default StatisticScreen;
