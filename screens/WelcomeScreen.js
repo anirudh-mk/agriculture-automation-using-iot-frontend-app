@@ -1,62 +1,9 @@
-import { View, Text, Image, StyleSheet } from "react-native";
-import React, { useEffect, useState } from "react";
-
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useNavigation } from "@react-navigation/native";
-
+import { View, Text, StyleSheet } from "react-native";
 import CirculerImage from "../components/CirculerImage";
 import TextButton from "../components/TextButton";
-
 import colors from "../utils/Colors";
 
 const WelcomeScreen = () => {
-  const navigation = useNavigation();
-
-  const [loading, setLoading] = useState(false);
-  const [shouldRenderLogin, setShouldRenderLogin] = useState(false);
-  const [navigationError, setNavigationError] = useState(false);
-
-  // useEffect(()=>{
-  //   const handleWelcome = async () => {
-  //     try{
-  //       const isFirstTime = await AsyncStorage.getItem('isFirstTime')
-  //       const isLogin = await AsyncStorage.getItem('isLogin')
-
-  //       if (isLogin === 'true'){
-  //         navigation.navigate('mainScreen')
-  //       }
-  //       else if (isFirstTime === 'true'){
-  //         setShouldRenderLogin(true)
-  //       }
-  //     } catch(error){
-  //       console.log(error)
-  //     }finally{
-  //       setLoading(false)
-  //     }
-  //   }
-  //   handleWelcome();
-  // },[navigation])
-
-  const handleNavigation = () => {
-    navigation.navigate("loginScreen");
-  };
-
-  if (navigationError) {
-    return (
-      <View
-        style={{
-          width: "100%",
-          flex: 1,
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <Text style={{ fontSize: 14 }}>
-          Something went wrong please try again
-        </Text>
-      </View>
-    );
-  }
 
   return (
     <View style={styles.screen}>
@@ -71,7 +18,6 @@ const WelcomeScreen = () => {
           borderRadious={15}
           name="Get Started"
           textColor={colors.secondery}
-          onPress={handleNavigation}
         />
       </View>
       <View style={styles.textContainer}>
