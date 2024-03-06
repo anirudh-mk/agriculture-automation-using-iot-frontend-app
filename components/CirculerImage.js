@@ -8,7 +8,6 @@ const CirculerImage = ({ source, size }) => {
       style={{
         width: size,
         height: size,
-        borderRadius: size / 2,
       }}
     />
   );
