@@ -3,7 +3,6 @@ import {
   TouchableHighlight,
   View,
   StyleSheet,
-  Dimensions,
 } from "react-native";
 import React from "react";
 
@@ -12,32 +11,14 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import colors from "../utils/Colors";
 
 const TextButton = ({
-  color,
-  height,
-  width,
-  borderRadious,
   name,
   textColor,
   onPress,
   icon,
-  textPosition,
-  marginBottom,
   iconColor,
 }) => {
-  const screenWidth = Dimensions.get("window").width;
-
   return (
-    <TouchableHighlight
-      style={[
-        styles.screen,
-        {
-          width: screenWidth - 40,
-          height: height,
-          borderRadius: borderRadious,
-          backgroundColor: color,
-          marginBottom: marginBottom ? marginBottom : 0,
-        },
-      ]}
+    <TouchableHighlight style={styles.button}
       onPress={onPress}
     >
       <View style={styles.iconContainer}>
@@ -52,7 +33,6 @@ const TextButton = ({
             styles.text,
             {
               color: textColor,
-              textAlign: textPosition ? textPosition : "center",
             },
           ]}
         >
@@ -64,25 +44,24 @@ const TextButton = ({
 };
 
 const styles = StyleSheet.create({
-  screen: {
-    position: "relative",
-    justifyContent: "center",
-  },
-  text: {
-    width: "100%",
-    paddingRight: 20,
-    paddingLeft: 20,
-    fontSize: 16,
-    fontWeight: "600",
+  button: {
+    padding: 20,
+    width: '100%',
+    backgroundColor: '#f2f2f2',
+    borderRadius: 10,
+    margin: 10,
   },
   iconContainer: {
-    position: "absolute",
-    width: "100%",
-    flexDirection: "row",
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '100%',
   },
   iconStyle: {
-    position: "absolute",
-    left: 12,
+  },
+  text: {
+    fontSize: 18,
+    fontWeight: "600",
   },
 });
 export default TextButton;
