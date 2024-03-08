@@ -57,8 +57,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     width: '100%',
   },
-  iconStyle: {
-  },
   text: {
     fontSize: 18,
     fontWeight: "600",
