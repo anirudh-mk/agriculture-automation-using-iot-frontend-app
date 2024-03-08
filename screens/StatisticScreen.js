@@ -1,6 +1,5 @@
 import { View, Text, StyleSheet, FlatList } from "react-native";
 import React from "react";
-import colors from "../utils/Colors";
 import { lastCropsDetails, pieCartData } from "../utils/SupportiveDataFile";
 import { Dimensions } from "react-native";
 import TextCard from "../components/TextCard";
@@ -23,15 +22,9 @@ const StatisticScreen = () => {
   const cardContainer = (item) => {
     return (
       <TextCard
-        color={colors.white}
-        height={60}
-        width={screenWidth - 30}
-        borderRadious={12}
+        color='#f2f2f2'
         mainHeadding={item.item.crop}
         subHeadding={item.item.date}
-        textColor={colors.black}
-        marginBottom={8}
-        marginTop={8}
       />
     );
   };
@@ -62,8 +55,7 @@ const StatisticScreen = () => {
       </View>
       <View style={styles.scrollingContainer}>
         <FlatList
-          style={{ width: "100%" }}
-          contentContainerStyle={{ alignItems: "center" }}
+          style={styles.itemsContainer}
           data={lastCropsDetails}
           renderItem={cardContainer}
           keyExtractor={(item) => item.id}
@@ -77,39 +69,29 @@ const styles = StyleSheet.create({
   screen: {
     display: "flex",
     flex: 1,
-    width: "100%",
     paddingTop: 24,
   },
   headdingContainer: {
-    display: "flex",
-    justifyContent: "center",
-    height: 80,
-    width: "100%",
-    paddingLeft: 20,
+    padding: 20,
   },
   headdingText: {
     fontSize: 28,
-    fontWeight: "400",
+    fontWeight: "600",
   },
   subHeaddingContainer: {
-    display: "flex",
-    justifyContent: "center",
-    width: "100%",
-    height: 50,
-    paddingLeft: 20,
+    padding: 20,
   },
   subHeaddingText: {
     fontSize: 20,
-    fontWeight: "400",
+    fontWeight: "500",
   },
   graphContainer: {
-    width: "100%",
-    height: 250,
+    padding: 20
   },
   scrollingContainer: {
     display: "flex",
     flex: 1,
-    width: "100%",
+    padding: 10
   },
 });
 
