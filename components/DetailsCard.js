@@ -1,42 +1,35 @@
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, TouchableHighlight } from 'react-native'
 import React from 'react'
-
-import { Dimensions } from 'react-native'
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons'
-import { TouchableHighlight } from 'react-native-gesture-handler'
 import colors from '../utils/Colors'
 
 
-const DetailsCard = ({ marginLeft, marginRight, borderRadius, vagiatableName }) => {
-
-    const { width, height } = Dimensions.get('window')
+const DetailsCard = ({ vagiatableName }) => {
 
     return (
-    <TouchableHighlight style={[
-        styles.card,
-        {
-            width:width-(marginLeft+marginRight),
-            borderRadius:borderRadius,
-             }]}>
-        <View>
-            <Text style={styles.heddingText}>{vagiatableName}</Text>
-            <MaterialCommunityIcons
-                name='clock'
-                color={colors.primary}
-                size={12}
-                style={styles.icon}
-            />
-            <Text style={styles.subHeadding}>20 day left</Text>
-            <View style={styles.grapContainer}>
+        <TouchableHighlight style={styles.cardContainer}>
+            <View>
+                <Text style={styles.heddingText}>{vagiatableName}</Text>
+                <View style={styles.subHeaddingContainer}>
+                    <MaterialCommunityIcons
+                        name='clock'
+                        color={colors.primary}
+                        size={16}
+                    />
+                    <Text style={styles.subHeadding}>20 day left</Text>
+                </View>
+
+                <View style={styles.grapContainer}>
+
+                </View>
             </View>
-        </View>
-    </TouchableHighlight>
-  )
+        </TouchableHighlight>
+    )
 }
 
 const styles = StyleSheet.create({
-    card:{
-        height:182,
+    cardContainer: {
+        padding: 20,
         borderWidth: 1,
         borderColor: 'rgba(10, 109, 247, 0.19)',
         backgroundColor: 'rgba(250, 250, 250, 0.00)',
@@ -44,35 +37,27 @@ const styles = StyleSheet.create({
         shadowOffset: { width: 0, height: 4 },
         shadowOpacity: 1,
         shadowRadius: 10,
+        borderRadius: 10,
+        width: '100%'
     },
-    heddingText:{
-        fontSize:12,
-        fontWeight:'600',
-        top:27,
-        left:20,
+    heddingText: {
+        fontSize: 18,
+        fontWeight: '600',
     },
-    icon:{
-        top:50,
-        left:20,
-        position:'absolute'
+    subHeaddingContainer: {
+        display: 'flex',
+        flexDirection: 'row',
+        marginTop: 5,
+        marginBottom: 20
     },
-    subHeadding:{
-        position:'absolute',
-        top:50,
-        left:36,
-        fontSize:10,
-        color:colors.gray
-
+    subHeadding: {
+        paddingLeft: 5,
     },
-    grapContainer:{
-        position:'absolute',
-        backgroundColor:'tomato',
-        top:80,
-        width:'100%',
-        height:100,
-        flex:1,
-        flexDirection:'row'
+    grapContainer: {
+        padding: 20,
+        backgroundColor: 'tomato'
     }
+
 })
 
 export default DetailsCard
