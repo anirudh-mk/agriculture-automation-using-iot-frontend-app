@@ -49,12 +49,20 @@ import { View, Text } from 'react-native'
 import React from 'react'
 import WelcomeScreen from './screens/WelcomeScreen'
 import UserScreen from './screens/UserScreen'
+import StatisticScreen from './screens/StatisticScreen'
+import LoginScreen from './screens/LoginScreen'
+import HomeScreen from './screens/HomeScreen'
+import FarmScreen from './screens/FarmScreen'
 
 
 const App = () => {
   return (
     // <WelcomeScreen />
-    <UserScreen />
+    // <UserScreen />
+    // <StatisticScreen />
+    // <LoginScreen />
+    // <HomeScreen />
+    <FarmScreen />
   )
 }
 
