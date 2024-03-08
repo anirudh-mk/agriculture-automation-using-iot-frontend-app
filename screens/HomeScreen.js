@@ -5,20 +5,20 @@ import ImageCard from "../components/ImageCard";
 import { homeScreenFarmData } from "../utils/SupportiveDataFile";
 
 const HomeScreen = () => {
-  const navigation = useNavigation();
+  // const navigation = useNavigation();
 
-  const navigate = () => {
-    navigation.navigate("farmScreen");
-  };
+  // const navigate = () => {
+  //   navigation.navigate("farmScreen");
+  // };
 
   const renderItem = (item) => {
     return (
       <ImageCard
         banner={require("../assets/tomato.png")}
         farm={item.item.farmName}
-        vegitable={item.item.vegitableName}
+        vegetable={item.item.vegitableName}
         daysLeft={item.item.dayLeft + "day left"}
-        onPress={navigate}
+      // onPress={navigate}
       />
     );
   };
@@ -27,7 +27,6 @@ const HomeScreen = () => {
     <View style={styles.screen}>
       <FlatList
         style={{ width: "100%" }}
-        contentContainerStyle={{ alignItems: "center" }}
         data={homeScreenFarmData}
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
@@ -40,7 +39,8 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
     alignItems: "center",
-    paddingTop: 25,
+    paddingTop: 40,
+    paddingHorizontal: 20,
     paddingBottom: 80,
   },
 });
