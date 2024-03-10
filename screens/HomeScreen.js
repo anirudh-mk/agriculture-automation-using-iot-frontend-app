@@ -5,11 +5,11 @@ import ImageCard from "../components/ImageCard";
 import { homeScreenFarmData } from "../utils/SupportiveDataFile";
 
 const HomeScreen = () => {
-  // const navigation = useNavigation();
+  const navigation = useNavigation();
 
-  // const navigate = () => {
-  //   navigation.navigate("farmScreen");
-  // };
+  const handleNavigation = () => {
+    navigation.navigate("farmScreen");
+  };
 
   const renderItem = (item) => {
     return (
@@ -18,7 +18,7 @@ const HomeScreen = () => {
         farm={item.item.farmName}
         vegetable={item.item.vegitableName}
         daysLeft={item.item.dayLeft + "day left"}
-      // onPress={navigate}
+        onPress={handleNavigation}
       />
     );
   };
