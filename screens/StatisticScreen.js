@@ -22,7 +22,6 @@ const StatisticScreen = () => {
   const cardContainer = (item) => {
     return (
       <TextCard
-        color='#f2f2f2'
         mainHeadding={item.item.crop}
         subHeadding={item.item.date}
       />

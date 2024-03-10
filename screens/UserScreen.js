@@ -1,13 +1,16 @@
 import { View, Text, StyleSheet } from "react-native";
 import React from "react";
 // import AsyncStorage from "@react-native-async-storage/async-storage";
-// import { useNavigation } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 import IconTextButton from "../components/IconTextButton";
 import CirculerImage from "../components/CirculerImage";
 import colors from "../utils/Colors";
 
 const UserScreen = () => {
-  // const navigation = useNavigation();
+  const navigation = useNavigation();
+  handleLogoutPress = () => {
+    navigation.navigate('loginScreen')
+  }
 
   // const handleLogout = (async) => {
   //   try {
@@ -45,6 +48,7 @@ const UserScreen = () => {
         <IconTextButton
           name="Logout"
           icon="logout"
+          onPress={handleLogoutPress}
         />
       </View>
     </View>
