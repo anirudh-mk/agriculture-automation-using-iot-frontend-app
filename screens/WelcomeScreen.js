@@ -2,8 +2,14 @@ import { View, Text, StyleSheet } from "react-native";
 import CirculerImage from "../components/CirculerImage";
 import TextButton from "../components/TextButton";
 import colors from "../utils/Colors";
+import { useNavigation } from "@react-navigation/native";
 
 const WelcomeScreen = () => {
+  const navigation = useNavigation();
+  handleGetStart = () => {
+    navigation.navigate("loginScreen");
+  }
+
 
   return (
     <View style={styles.screen}>
@@ -18,6 +24,7 @@ const WelcomeScreen = () => {
           borderRadious={15}
           name="Get Started"
           textColor={colors.secondery}
+          onPress={handleGetStart}
         />
       </View>
       <View style={styles.textContainer}>
