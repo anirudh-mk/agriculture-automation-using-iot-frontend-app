@@ -20,7 +20,24 @@ const DetailsCard = ({ vagiatableName }) => {
                 </View>
 
                 <View style={styles.grapContainer}>
-
+                    <View style={styles.circle}>
+                        <View style={styles.innerCircle}>
+                            <Text style={styles.dataHeadding}>N</Text>
+                            <Text style={styles.dataText}>20%</Text>
+                        </View>
+                    </View>
+                    <View style={styles.circle}>
+                        <View style={styles.innerCircle}>
+                            <Text style={styles.dataHeadding}>P</Text>
+                            <Text style={styles.dataText}>65%</Text>
+                        </View>
+                    </View>
+                    <View style={styles.circle}>
+                        <View style={styles.innerCircle}>
+                            <Text style={styles.dataHeadding}>K</Text>
+                            <Text style={styles.dataText}>52%</Text>
+                        </View>
+                    </View>
                 </View>
             </View>
         </TouchableHighlight>
@@ -29,7 +46,7 @@ const DetailsCard = ({ vagiatableName }) => {
 
 const styles = StyleSheet.create({
     cardContainer: {
-        padding: 20,
+        padding: 16,
         borderWidth: 1,
         borderColor: 'rgba(10, 109, 247, 0.19)',
         backgroundColor: 'rgba(250, 250, 250, 0.00)',
@@ -47,6 +64,7 @@ const styles = StyleSheet.create({
     subHeaddingContainer: {
         display: 'flex',
         flexDirection: 'row',
+        alignItems: 'center',
         marginTop: 5,
         marginBottom: 20
     },
@@ -54,10 +72,36 @@ const styles = StyleSheet.create({
         paddingLeft: 5,
     },
     grapContainer: {
-        padding: 20,
-        backgroundColor: 'tomato'
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between'
+    },
+    circle: {
+        width: 80,
+        height: 80,
+        backgroundColor: '#076DFC',
+        borderRadius: 40,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    innerCircle: {
+        width: 65,
+        backgroundColor: 'white',
+        height: 65,
+        borderRadius: 30,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    dataHeadding: {
+        fontSize: 18,
+        fontWeight: '600'
+    },
+    dataText: {
+        fontSize: 14,
+        fontWeight: '500'
     }
-
 })
 
 export default DetailsCard

@@ -9,7 +9,6 @@ const FarmScreen = () => {
         <Text style={styles.headdingText}>Farm 1</Text>
       </View>
       <ScrollView style={styles.scrollViewContainer}>
-        <Text style={styles.subHeadding}>NPK</Text>
         <View style={styles.deailsCardContainer}>
           <DetailsCard
             vagiatableName='Onion'
@@ -37,10 +36,11 @@ const styles = StyleSheet.create({
   screen: {
     display: "flex",
     flex: 1,
-    paddingTop: 24,
+    paddingTop: 28,
   },
   headdingContainer: {
-    padding: 20,
+    paddingLeft: 16,
+    paddingVertical: 10
   },
   headdingText: {
     fontSize: 28,
@@ -51,13 +51,14 @@ const styles = StyleSheet.create({
     flex: 1
   },
   subHeadding: {
-    padding: 20,
+    paddingLeft: 16,
+    paddingVertical: 10,
     fontSize: 20,
     fontWeight: '600'
   },
   deailsCardContainer: {
     alignItems: 'center',
-    padding: 20
+    padding: 16
   },
 })
 
