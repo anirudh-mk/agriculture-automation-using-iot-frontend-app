@@ -34,9 +34,9 @@ const StatisticScreen = () => {
       <View style={styles.headdingContainer}>
         <Text style={styles.headdingText}>Statistics</Text>
       </View>
-      <View style={styles.subHeaddingContainer}>
+      {/* <View style={styles.subHeaddingContainer}>
         <Text style={styles.subHeaddingText}>Top Conrtibuterd</Text>
-      </View>
+      </View> */}
       <View style={styles.graphContainer}>
         <PieChart
           data={pieCartData}
@@ -70,6 +70,7 @@ const styles = StyleSheet.create({
     display: "flex",
     flex: 1,
     paddingTop: 24,
+    paddingBottom: 70
   },
   headdingContainer: {
     padding: 20,
@@ -86,7 +87,7 @@ const styles = StyleSheet.create({
     fontWeight: "500",
   },
   graphContainer: {
-    padding: 20
+    padding: 10,
   },
   scrollingContainer: {
     display: "flex",

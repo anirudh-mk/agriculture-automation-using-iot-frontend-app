@@ -35,7 +35,7 @@ const TextCard = ({ mainHeadding, subHeadding, onPress, textColor }) => {
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: '#f2f2f2',
+    backgroundColor: '#ffffff',
     borderRadius: 10,
     margin: 10,
     padding: 20
