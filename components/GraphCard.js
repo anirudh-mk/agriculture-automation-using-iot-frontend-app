@@ -13,7 +13,8 @@ const DetailsCard = ({ vagiatableName, navigation }) => {
 
   const screenWidth = Dimensions.get("window").width;
   const chartConfig = {
-    backgroundGradientFrom: "#fff",
+    backgroundGradientFrom: 'white',
+    backgroundGradientFromOpacity: 0,
     backgroundGradientToOpacity: 0,
     color: (opacity = 1) => `rgba(43,105,198, ${opacity})`,
   };

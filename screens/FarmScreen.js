@@ -37,6 +37,7 @@ const styles = StyleSheet.create({
     display: "flex",
     flex: 1,
     paddingTop: 28,
+    backgroundColor: 'white'
   },
   headdingContainer: {
     paddingLeft: 16,

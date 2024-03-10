@@ -66,6 +66,7 @@ const StatisticScreen = () => {
 
 const styles = StyleSheet.create({
   screen: {
+    backgroundColor: '#fff',
     display: "flex",
     flex: 1,
     paddingTop: 24,

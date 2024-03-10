@@ -57,6 +57,7 @@ const UserScreen = () => {
 
 const styles = StyleSheet.create({
   screen: {
+    backgroundColor: 'white',
     flex: 1,
     flexDirection: "column",
     paddingBottom: 80,

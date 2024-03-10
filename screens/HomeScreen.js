@@ -37,6 +37,7 @@ const HomeScreen = () => {
 
 const styles = StyleSheet.create({
   screen: {
+    backgroundColor: 'white',
     flex: 1,
     alignItems: "center",
     paddingTop: 40,
