@@ -10,73 +10,43 @@ import IconPasswordInput from '../components/IconPasswordInput'
 import IconTextButton from '../components/IconTextButton'
 import IconTextInput from '../components/IconTextInput'
 import TextButton from '../components/TextButton'
-
+import axios from 'axios';
 import colors from '../utils/Colors'
 
 const LoginScreen = () => {
   const navigation = useNavigation();
 
-  handleLogin = () => {
-    navigation.navigate('mainScreen')
-  }
+  const [userName, setUserName] = useState('');
+  const [password, setPassword] = useState('');
 
-  // const [userName, setUserName] = useState('');
-  // const [password, setPassword] = useState('');
+  const handleLogin = () => {
+    const url = 'http://10.0.2.2:8000/api/v1/user/login/';
 
-  // useEffect(() => {
-  //   const checkLoginStatus = async () => {
-  //     try {
-  //       const isLogin = await AsyncStorage.getItem('isLogin');
-  //       if (isLogin === 'true') {
-  //         navigation.reset({
-  //           index: 0,
-  //           routes: [{ name: 'mainScreen' }],
-  //         });
-  //       }
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
-  //   checkLoginStatus();
-  // }, [navigation]);
+    const data = {
+      email: userName,
+      password: password,
+    };
 
-  // const handleUserName = (text) => {
-  //   setUserName(text);
-  // };
-
-  // const handlePassword = (text) => {
-  //   setPassword(text);
-  // };
-
-  // const handleLogin = () => {
-  //   if (userName === 'anirudh' && password === '12607') {
-  //     Toast.show({
-  //       type: 'success',
-  //       text1: 'Success',
-  //       text2: 'Login successfully',
-  //     });
-  //     setData();
-  //     navigation.reset({
-  //       index: 0,
-  //       routes: [{ name: 'mainScreen' }],
-  //     });
-  //   } else {
-  //     Toast.show({
-  //       type: 'error',
-  //       text1: 'Error',
-  //       text2: 'Invalid username or password',
-  //     });
-  //   }
-  // };
-
-  // const setData = async () => {
-  //   try {
-  //     await AsyncStorage.setItem('isLogin', 'true');
-  //     console.log('data saved');
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
+    axios.post(url, data)
+      .then(async response => {
+        console.log('Response:', response.data);
+        const accessToken = response.data.response.accessToken; // Check the structure of the response object to access the accessToken property
+        if (accessToken) { // Check if accessToken is not undefined
+          try {
+            await AsyncStorage.setItem('accessToken', accessToken);
+            console.log('Access token stored in AsyncStorage.');
+            navigation.navigate('mainScreen');
+          } catch (error) {
+            console.error('Error storing access token:', error);
+          }
+        } else {
+          console.error('Access token is undefined.');
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+  };
 
   return (
     <View style={styles.screen}>
@@ -96,7 +66,7 @@ const LoginScreen = () => {
           icon='at'
           borderRadious={10}
           placeholder='Username'
-        // onChangeText={handleUserName}
+          onChangeText={(text) => setUserName(text)}
         />
       </View>
       <View style={styles.passwordContainer}>
@@ -107,7 +77,7 @@ const LoginScreen = () => {
           icon='lock'
           borderRadious={10}
           placeholder='Password'
-        // onChangeText={handlePassword}
+          onChangeText={(text) => setPassword(text)}
         />
       </View>
       <View style={styles.forgotPassword}>
