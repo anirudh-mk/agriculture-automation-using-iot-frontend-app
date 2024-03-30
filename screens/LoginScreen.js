@@ -29,12 +29,11 @@ const LoginScreen = () => {
 
     axios.post(url, data)
       .then(async response => {
-        console.log('Response:', response.data);
-        const accessToken = response.data.response.accessToken; // Check the structure of the response object to access the accessToken property
-        if (accessToken) { // Check if accessToken is not undefined
+        // console.log('Response:', response.data);
+        const accessToken = response.data.response.accessToken;
+        if (accessToken) {
           try {
             await AsyncStorage.setItem('accessToken', accessToken);
-            console.log('Access token stored in AsyncStorage.');
             navigation.navigate('mainScreen');
           } catch (error) {
             console.error('Error storing access token:', error);

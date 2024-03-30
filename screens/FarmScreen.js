@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet, ScrollView } from 'react-native'
-import React from 'react'
+import React, { useEffect } from 'react'
 import DetailsCard from '../components/DetailsCard'
 import GraphCard from '../components/GraphCard'
 const FarmScreen = () => {

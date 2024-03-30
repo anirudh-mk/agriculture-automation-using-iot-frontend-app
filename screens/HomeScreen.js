@@ -1,8 +1,9 @@
 import { View, StyleSheet, FlatList } from "react-native";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import ImageCard from "../components/ImageCard";
-import { homeScreenFarmData } from "../utils/SupportiveDataFile";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import axios from "axios";
 
 const HomeScreen = () => {
   const navigation = useNavigation();
@@ -11,13 +12,36 @@ const HomeScreen = () => {
     navigation.navigate("farmScreen");
   };
 
-  const renderItem = (item) => {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const accessToken = await AsyncStorage.getItem('accessToken');
+        const response = await axios.get(
+          'http://10.0.2.2:8000/api/v1/user/farm-list/',
+          {
+            headers: {
+              Authorization: `Bearer ${accessToken}`
+            }
+          }
+        );
+        setData(response.data.response);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const renderItem = ({ item }) => {
     return (
       <ImageCard
         banner={require("../assets/tomato.png")}
-        farm={item.item.farmName}
-        vegetable={item.item.vegitableName}
-        daysLeft={item.item.dayLeft + "day left"}
+        farm={item.farm_name}
+        vegetable={item.vegetable_name}
+        daysLeft={item.days_remaining + " days left"}
         onPress={handleNavigation}
       />
     );
@@ -27,9 +51,9 @@ const HomeScreen = () => {
     <View style={styles.screen}>
       <FlatList
         style={{ width: "100%" }}
-        data={homeScreenFarmData}
+        data={data}
         renderItem={renderItem}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => item.id.toString()}
       />
     </View>
   );
