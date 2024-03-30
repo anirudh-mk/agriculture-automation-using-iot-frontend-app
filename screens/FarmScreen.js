@@ -2,7 +2,14 @@ import { View, Text, StyleSheet, ScrollView } from 'react-native'
 import React, { useEffect } from 'react'
 import DetailsCard from '../components/DetailsCard'
 import GraphCard from '../components/GraphCard'
-const FarmScreen = () => {
+
+
+const FarmScreen = ({ route }) => {
+  const { farmId } = route.params;
+
+  console.log('====================================');
+  console.log(farmId);
+  console.log('====================================');
   return (
     <View style={styles.screen}>
       <View style={styles.headdingContainer}>

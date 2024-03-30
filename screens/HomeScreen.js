@@ -8,10 +8,6 @@ import axios from "axios";
 const HomeScreen = () => {
   const navigation = useNavigation();
 
-  const handleNavigation = () => {
-    navigation.navigate("farmScreen");
-  };
-
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -35,6 +31,10 @@ const HomeScreen = () => {
     fetchData();
   }, []);
 
+  const handleNavigation = (farmId) => {
+    navigation.navigate("farmScreen", { farmId });
+  };
+
   const renderItem = ({ item }) => {
     return (
       <ImageCard
@@ -42,7 +42,7 @@ const HomeScreen = () => {
         farm={item.farm_name}
         vegetable={item.vegetable_name}
         daysLeft={item.days_remaining + " days left"}
-        onPress={handleNavigation}
+        onPress={() => handleNavigation(item.id)} // Pass farm id to handleNavigation
       />
     );
   };
