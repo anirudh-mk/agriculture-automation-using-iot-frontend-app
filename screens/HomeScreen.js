@@ -1,4 +1,4 @@
-import { View, StyleSheet, FlatList } from "react-native";
+import { View, Text, StyleSheet, FlatList } from "react-native";
 import React, { useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import ImageCard from "../components/ImageCard";
@@ -36,15 +36,30 @@ const HomeScreen = () => {
   };
 
   const renderItem = ({ item }) => {
-    return (
-      <ImageCard
-        banner={require("../assets/tomato.png")}
-        farm={item.farm_name}
-        vegetable={item.vegetable_name}
-        daysLeft={item.days_remaining + " days left"}
-        onPress={() => handleNavigation(item.id)} // Pass farm id to handleNavigation
-      />
-    );
+    console.log(Object.keys(item.vegetable).length === 0);
+
+    if (Object.keys(item.vegetable).length === 0) {
+      return (
+        <ImageCard
+          banner={require("../assets/plus.png")}
+          farm={item.farm_name}
+          vegetable={item.vegetable_name}
+          daysLeft={item.days_remaining + " days left"}
+          onPress={() => handleNavigation(item.id)}
+        />
+      )
+    } else {
+      // Render the ImageCard as usual
+      return (
+        <ImageCard
+          banner={require("../assets/tomato.png")}
+          farm={item.farm_name}
+          vegetable={item.vegetable_name}
+          daysLeft={item.days_remaining + " days left"}
+          onPress={() => handleNavigation(item.id)}
+        />
+      );
+    }
   };
 
   return (
