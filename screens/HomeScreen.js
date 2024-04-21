@@ -36,16 +36,18 @@ const HomeScreen = () => {
   };
 
   const renderItem = ({ item }) => {
-    console.log(Object.keys(item.vegetable).length === 0);
 
     if (Object.keys(item.vegetable).length === 0) {
+
+      const id = item.id
+
       return (
         <ImageCard
           banner={require("../assets/plus.png")}
           farm={item.farm_name}
           vegetable={item.vegetable_name}
           daysLeft={item.days_remaining + " days left"}
-          onPress={() => navigation.navigate("farmCreateScreen")}
+          onPress={() => navigation.navigate("farmCreateScreen", { id })}
         />
       )
     } else {

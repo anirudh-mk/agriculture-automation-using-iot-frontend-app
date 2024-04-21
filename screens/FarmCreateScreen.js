@@ -3,7 +3,11 @@ import { SelectList } from 'react-native-dropdown-select-list';
 import { View, Text, StyleSheet } from 'react-native';
 import axios from 'axios';
 
-const FarmCreateScreen = () => {
+const FarmCreateScreen = ({ route }) => {
+
+    const { id } = route.params;
+
+
     const [selectedItem, setSelectedItem] = useState(null);
     const [selectedItemDetails, setSelectedItemDetails] = useState(null);
     const [data, setData] = useState([]);
