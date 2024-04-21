@@ -29,16 +29,14 @@ const HomeScreen = () => {
     };
 
     fetchData();
-  }, []);
+  }, [data]);
 
   const handleNavigation = (farmId) => {
     navigation.navigate("farmScreen", { farmId });
   };
 
   const renderItem = ({ item }) => {
-    console.log('====================================');
-    console.log(item);
-    console.log('====================================');
+
     if (Object.keys(item.vegetable).length === 0) {
 
       const id = item.id

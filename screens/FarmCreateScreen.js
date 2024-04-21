@@ -1,84 +1,74 @@
 import React, { useState, useEffect } from 'react';
 import { SelectList } from 'react-native-dropdown-select-list';
-import { View, Text, StyleSheet, Button } from 'react-native'; // Import AsyncStorage
+import { View, Text, StyleSheet, Button } from 'react-native';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
+import { useNavigation } from '@react-navigation/native';
 
 const FarmCreateScreen = ({ route }) => {
     const { id, farmName } = route.params;
+    const navigation = useNavigation();
 
     const [selectedItem, setSelectedItem] = useState(null);
     const [selectedItemDetails, setSelectedItemDetails] = useState(null);
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        // Fetch data from API to populate dropdown
-        axios.get('http://10.0.2.2:8000/api/v1/vegetable/list')
-            .then(response => {
-                // Transform response to fit SelectList component format
+        const fetchData = async () => {
+            try {
+                // Fetch data from API to populate dropdown
+                const response = await axios.get('http://10.0.2.2:8000/api/v1/vegetable/list');
                 const transformedData = response.data.response.map(item => ({
                     key: item.id,
                     value: item.name,
                 }));
                 setData(transformedData);
-            })
-            .catch(error => {
-                console.error('Error fetching vegetable list:', error);
-            });
 
-        // Fetch access token from local storage
-        AsyncStorage.getItem('accessToken')
-            .then(token => {
+                // Fetch access token from local storage
+                const token = await AsyncStorage.getItem('accessToken');
                 if (token) {
                     // Fetch vegetable details based on the selected item
-                    axios.post('http://10.0.2.2:8000/api/v1/vegetable/details/', { vegetable_id: selectedItem }, {
-                        headers: {
-                            'Authorization': `Bearer ${token}`,
-                            'Content-Type': 'application/json'
+                    const detailsResponse = await axios.post(
+                        'http://10.0.2.2:8000/api/v1/vegetable/details/',
+                        { vegetable_id: selectedItem },
+                        {
+                            headers: {
+                                'Authorization': `Bearer ${token}`,
+                                'Content-Type': 'application/json'
+                            }
                         }
-                    })
-                        .then(response => {
-                            setSelectedItemDetails(response.data.response[0]);
-                        })
-                        .catch(error => {
-                            console.error('Error fetching vegetable details:', error);
-                        });
+                    );
+                    setSelectedItemDetails(detailsResponse.data.response[0]);
                 } else {
                     console.error('Access token not found in local storage');
                     // Handle the case where access token is not found
                 }
-            })
-            .catch(error => {
-                console.error('Error fetching access token from local storage:', error);
-            });
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        };
+        fetchData();
     }, [selectedItem]);
 
-    const handleSubmission = () => {
-        if (id && selectedItem) {
-            AsyncStorage.getItem('accessToken')
-                .then(token => {
-                    if (token) {
-                        axios.post('http://10.0.2.2:8000/api/v1/farm/vegetable-create/', {
-                            farm: id,
-                            vegetable: selectedItem
-                        }, { headers: { 'Authorization': `Bearer ${token}` } })
-                            .then(response => {
-                                console.log('Submission successful:', response.data);
-                                // Handle success if needed
-                            })
-                            .catch(error => {
-                                console.error('Error submitting data:', error);
-                                // Handle error if needed
-                            });
-                    } else {
-                        console.error('Access token not found in local storage');
-                        // Handle the case where access token is not found
-                    }
-                })
-                .catch(error => {
-                    console.error('Error fetching access token from local storage:', error);
-                });
+    const handleSubmission = async () => {
+        try {
+            const token = await AsyncStorage.getItem('accessToken');
+            await axios.post(
+                'http://10.0.2.2:8000/api/v1/farm/vegetable-create/',
+                {
+                    farm: id,
+                    vegetable: selectedItem
+                },
+                { headers: { 'Authorization': `Bearer ${token}` } }
+            );
+            console.log('Submission successful');
+            // Navigate to mainScreen after successful submission
+            navigation.navigate('mainScreen');
+        } catch (error) {
+            console.error('Error submitting data:', error);
+            // Handle error if needed
+            // Navigate to mainScreen even if submission failed
+            navigation.navigate('mainScreen');
         }
     };
 
