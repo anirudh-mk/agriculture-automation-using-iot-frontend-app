@@ -4,7 +4,7 @@ import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons'
 import colors from '../utils/Colors'
 
 
-const DetailsCard = ({ vagiatableName }) => {
+const DetailsCard = ({ vagiatableName, timeRequired }) => {
 
     return (
         <TouchableHighlight style={styles.cardContainer}>
@@ -16,7 +16,7 @@ const DetailsCard = ({ vagiatableName }) => {
                         color={colors.primary}
                         size={16}
                     />
-                    <Text style={styles.subHeadding}>20 day left</Text>
+                    <Text style={styles.subHeadding}>{timeRequired} day left</Text>
                 </View>
 
                 <View style={styles.grapContainer}>

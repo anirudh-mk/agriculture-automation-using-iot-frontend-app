@@ -5,30 +5,31 @@ import GraphCard from '../components/GraphCard'
 
 
 const FarmScreen = ({ route }) => {
-  const { id, farmName } = route.params;
-
+  const { farmId, farmName, vegetableName, timeRequired } = route.params;
+  console.log(farmName, vegetableName, timeRequired);
   return (
     <View style={styles.screen}>
       <View style={styles.headdingContainer}>
-        <Text style={styles.headdingText}>Farm 1</Text>
+        <Text style={styles.headdingText}>{farmName}</Text>
       </View>
       <ScrollView style={styles.scrollViewContainer}>
         <View style={styles.deailsCardContainer}>
           <DetailsCard
-            vagiatableName='Onion'
+            vagiatableName={vegetableName}
+            timeRequired={timeRequired}
           />
         </View>
         <Text style={styles.subHeadding}>Live Data</Text>
         <View style={styles.deailsCardContainer}>
           <GraphCard
-            vagiatableName='Onion'
+            vagiatableName={vegetableName}
             navigation={true}
           />
         </View>
         <Text style={styles.subHeadding}>Market Prediction</Text>
         <View style={styles.deailsCardContainer}>
           <GraphCard
-            vagiatableName='Onion'
+            vagiatableName={vegetableName}
           />
         </View>
       </ScrollView>
