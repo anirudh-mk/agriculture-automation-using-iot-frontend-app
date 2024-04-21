@@ -40,6 +40,7 @@ const HomeScreen = () => {
     if (Object.keys(item.vegetable).length === 0) {
 
       const id = item.id
+      const farmName = item.farm_name
 
       return (
         <ImageCard
@@ -47,7 +48,7 @@ const HomeScreen = () => {
           farm={item.farm_name}
           vegetable={item.vegetable_name}
           daysLeft={item.days_remaining + " days left"}
-          onPress={() => navigation.navigate("farmCreateScreen", { id })}
+          onPress={() => navigation.navigate("farmCreateScreen", { id, farmName })}
         />
       )
     } else {
