@@ -36,11 +36,14 @@ const HomeScreen = () => {
   };
 
   const renderItem = ({ item }) => {
-
+    console.log('====================================');
+    console.log(item);
+    console.log('====================================');
     if (Object.keys(item.vegetable).length === 0) {
 
       const id = item.id
       const farmName = item.farm_name
+
 
       return (
         <ImageCard
@@ -51,14 +54,14 @@ const HomeScreen = () => {
           onPress={() => navigation.navigate("farmCreateScreen", { id, farmName })}
         />
       )
-    } else {
+    } if (Object.keys(item.vegetable).length !== 0) {
       // Render the ImageCard as usual
       return (
         <ImageCard
           banner={require("../assets/tomato.png")}
           farm={item.farm_name}
-          vegetable={item.vegetable_name}
-          daysLeft={item.days_remaining + " days left"}
+          vegetable={item.vegetable.name} // accessing the name property of vegetable
+          daysLeft={item.vegetable.time_require + " days left"} // accessing the time_require property of vegetable
           onPress={() => handleNavigation(item.id)}
         />
       );
