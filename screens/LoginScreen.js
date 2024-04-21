@@ -21,16 +21,15 @@ const LoginScreen = () => {
 
   const handleLogin = () => {
     const url = 'http://10.0.2.2:8000/api/v1/user/login/';
-
     const data = {
       email: userName,
       password: password,
     };
-
+    console.log(data);
     axios.post(url, data)
       .then(async response => {
-        // console.log('Response:', response.data);
-        const accessToken = response.data.response.accessToken;
+        console.log('Response:', response.data);
+        const accessToken = response.data.response[0].accessToken;
         if (accessToken) {
           try {
             await AsyncStorage.setItem('accessToken', accessToken);
