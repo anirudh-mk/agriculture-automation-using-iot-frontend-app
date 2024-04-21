@@ -1,25 +1,44 @@
 import { View, Text, StyleSheet } from "react-native";
-import React from "react";
-// import AsyncStorage from "@react-native-async-storage/async-storage";
+import React, { useEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
 import IconTextButton from "../components/IconTextButton";
 import CirculerImage from "../components/CirculerImage";
 import colors from "../utils/Colors";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import axios from "axios";
 
 const UserScreen = () => {
+  const [data, setData] = useState([]);
   const navigation = useNavigation();
-  handleLogoutPress = () => {
-    navigation.navigate('loginScreen')
-  }
 
-  // const handleLogout = (async) => {
-  //   try {
-  //     AsyncStorage.removeItem("isLogin");
-  //     navigation.navigate("loginScreen");
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
+  const handleLogoutPress = () => {
+    navigation.navigate('loginScreen');
+  };
+
+  console.log(data);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const accessToken = await AsyncStorage.getItem('accessToken');
+        const response = await axios.get(
+          'http://10.0.2.2:8000/api/v1/user/basic-details/',
+          {
+            headers: {
+              Authorization: `Bearer ${accessToken}`
+            }
+          }
+        );
+
+        console.log(response.data.response);
+        setData(response.data.response);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   return (
     <View style={styles.screen}>
@@ -31,18 +50,26 @@ const UserScreen = () => {
           source={require("../assets/user.png")}
           size={150}
         />
-        <Text style={styles.userName}>Anirudh MK</Text>
-        <Text style={styles.userEmail}>anirudhmk123@gmail.com</Text>
+        {data.length > 0 && (
+          <>
+            <Text style={styles.userName}>{data[0].first_name} {data[0].last_name}</Text>
+            <Text style={styles.userEmail}>{data[0].email}</Text>
+          </>
+        )}
       </View>
       <View style={styles.buttonContainer}>
-        <IconTextButton
-          name="User"
-          icon="at"
-        />
-        <IconTextButton
-          name="Contact us"
-          icon="message"
-        />
+        {data.length > 0 && (
+          <>
+            <IconTextButton
+              name={data[0].username}
+              icon="at"
+            />
+            <IconTextButton
+              name="Contact us"
+              icon="message"
+            />
+          </>
+        )}
       </View>
       <View style={styles.logoutContainer}>
         <IconTextButton
@@ -91,7 +118,6 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     alignItems: "center",
-
   },
   logoutContainer: {
     padding: 20,

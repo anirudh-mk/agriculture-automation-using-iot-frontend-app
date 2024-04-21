@@ -28,7 +28,7 @@ const LoginScreen = () => {
     console.log(data);
     axios.post(url, data)
       .then(async response => {
-        console.log('Response:', response.data);
+        // console.log('Response:', response.data);
         const accessToken = response.data.response[0].accessToken;
         if (accessToken) {
           try {
