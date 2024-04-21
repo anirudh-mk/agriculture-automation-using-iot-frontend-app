@@ -7,6 +7,7 @@ import MainScreen from "./screens/MainScreen";
 import WelcomeScreen from "./screens/WelcomeScreen";
 import LoginScreen from "./screens/LoginScreen";
 import FarmScreen from "./screens/FarmScreen";
+import FarmCreateScreen from "./screens/FarmCreateScreen";
 
 const screenOptions = {
   tabBarShowLabel: false,
@@ -37,6 +38,7 @@ const App = () => {
           <Screen.Screen name="loginScreen" component={LoginScreen} />
           <Screen.Screen name="mainScreen" component={MainScreen} />
           <Screen.Screen name="farmScreen" component={FarmScreen} />
+          <Screen.Screen name="farmCreateScreen" component={FarmCreateScreen} />
         </Screen.Navigator>
       </NavigationContainer>
     </>

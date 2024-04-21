@@ -45,7 +45,7 @@ const HomeScreen = () => {
           farm={item.farm_name}
           vegetable={item.vegetable_name}
           daysLeft={item.days_remaining + " days left"}
-          onPress={() => handleNavigation(item.id)}
+          onPress={() => navigation.navigate("farmCreateScreen")}
         />
       )
     } else {

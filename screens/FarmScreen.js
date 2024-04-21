@@ -7,9 +7,6 @@ import GraphCard from '../components/GraphCard'
 const FarmScreen = ({ route }) => {
   const { farmId } = route.params;
 
-  console.log('====================================');
-  console.log(farmId);
-  console.log('====================================');
   return (
     <View style={styles.screen}>
       <View style={styles.headdingContainer}>
