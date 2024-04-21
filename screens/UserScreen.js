@@ -29,8 +29,6 @@ const UserScreen = () => {
             }
           }
         );
-
-        console.log(response.data.response);
         setData(response.data.response);
       } catch (error) {
         console.log(error);
