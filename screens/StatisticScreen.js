@@ -1,12 +1,17 @@
 import { View, Text, StyleSheet, FlatList } from "react-native";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { lastCropsDetails, pieCartData } from "../utils/SupportiveDataFile";
 import { Dimensions } from "react-native";
 import TextCard from "../components/TextCard";
 import { PieChart } from "react-native-chart-kit";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import axios from "axios";
+
 
 const StatisticScreen = () => {
   const screenWidth = Dimensions.get("window").width;
+
+  const [data, setData] = useState([]);
 
   const chartConfig = {
     backgroundGradientFrom: "#1E2923",
@@ -19,11 +24,35 @@ const StatisticScreen = () => {
     useShadowColorFromDataset: false,
   };
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const accessToken = await AsyncStorage.getItem('accessToken');
+        const response = await axios.get(
+          'http://anirudhmk123.pythonanywhere.com/api/v1/farm/statistics/',
+          {
+            headers: {
+              Authorization: `Bearer ${accessToken}`
+            }
+          }
+        );
+        console.log(response.data.response);
+        setData(response.data.response);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+
   const cardContainer = (item) => {
+
     return (
       <TextCard
-        mainHeadding={item.item.crop}
-        subHeadding={item.item.date}
+        mainHeadding={item.item.name}
+        subHeadding={item.item.created_at}
       />
     );
   };
@@ -55,7 +84,7 @@ const StatisticScreen = () => {
       <View style={styles.scrollingContainer}>
         <FlatList
           style={styles.itemsContainer}
-          data={lastCropsDetails}
+          data={data}
           renderItem={cardContainer}
           keyExtractor={(item) => item.id}
         />
