@@ -17,7 +17,7 @@ const FarmCreateScreen = ({ route }) => {
         const fetchData = async () => {
             try {
                 // Fetch data from API to populate dropdown
-                const response = await axios.get('http://10.0.2.2:8000/api/v1/vegetable/list');
+                const response = await axios.get('http://anirudhmk123.pythonanywhere.com/api/v1/vegetable/list');
                 const transformedData = response.data.response.map(item => ({
                     key: item.id,
                     value: item.name,
@@ -29,7 +29,7 @@ const FarmCreateScreen = ({ route }) => {
                 if (token) {
                     // Fetch vegetable details based on the selected item
                     const detailsResponse = await axios.post(
-                        'http://10.0.2.2:8000/api/v1/vegetable/details/',
+                        'http://anirudhmk123.pythonanywhere.com/api/v1/vegetable/details/',
                         { vegetable_id: selectedItem },
                         {
                             headers: {
@@ -54,7 +54,7 @@ const FarmCreateScreen = ({ route }) => {
         try {
             const token = await AsyncStorage.getItem('accessToken');
             await axios.post(
-                'http://10.0.2.2:8000/api/v1/farm/vegetable-create/',
+                'http://anirudhmk123.pythonanywhere.com/api/v1/farm/vegetable-create/',
                 {
                     farm: id,
                     vegetable: selectedItem

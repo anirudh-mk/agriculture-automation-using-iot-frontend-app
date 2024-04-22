@@ -22,7 +22,7 @@ const UserScreen = () => {
       try {
         const accessToken = await AsyncStorage.getItem('accessToken');
         const response = await axios.get(
-          'http://10.0.2.2:8000/api/v1/user/basic-details/',
+          'http://anirudhmk123.pythonanywhere.com/api/v1/user/basic-details/',
           {
             headers: {
               Authorization: `Bearer ${accessToken}`

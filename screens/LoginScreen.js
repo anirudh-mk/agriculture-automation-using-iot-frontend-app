@@ -18,9 +18,10 @@ const LoginScreen = () => {
 
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
-
+  // http://anirudhmk123.pythonanywhere.com
   const handleLogin = () => {
-    const url = 'http://10.0.2.2:8000/api/v1/user/login/';
+    // const url = 'http://10.0.2.2:8000/api/v1/user/login/';
+    const url = 'http://anirudhmk123.pythonanywhere.com/api/v1/user/login/';
     const data = {
       email: userName,
       password: password,
