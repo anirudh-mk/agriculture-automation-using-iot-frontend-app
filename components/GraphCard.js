@@ -6,7 +6,7 @@ import {
   LineChart,
 } from "react-native-chart-kit";
 
-const DetailsCard = ({ vagiatableName, navigation, data }) => {
+const DetailsCard = ({ vagiatableName, navigation, data, n, p, k }) => {
 
   const [active, setActive] = useState('npk')
 
@@ -47,34 +47,72 @@ const DetailsCard = ({ vagiatableName, navigation, data }) => {
               <Text style={styles.buttonText}>K</Text>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={() => setActive('t')}>
-            <View>
-              <View style={[styles.menuActiveItem, active === 't' ? { backgroundColor: '#076DFC' } : { backgroundColor: 'white' }]} />
-              <Text style={styles.buttonText}>T</Text>
-            </View>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={() => setActive('w')}>
-            <View>
-              <View style={[styles.menuActiveItem, active === 'w' ? { backgroundColor: '#076DFC' } : { backgroundColor: 'white' }]} />
-              <Text style={styles.buttonText}>W</Text>
-            </View>
-          </TouchableOpacity>
         </View>
         }
-
-        <LineChart
-          data={data}
-          width={screenWidth}
-          height={200}
-          verticalLabelRotation={0}
-          chartConfig={chartConfig}
-          bezier
-          withDots={false}
-          withInnerLines={false}
-          withOuterLines={false}
-          fromZero={true}
-          formatYLabel={(label) => label | 0}
-        />
+        {active === 'npk' &&
+          <LineChart
+            data={data}
+            width={screenWidth - 30}
+            height={200}
+            verticalLabelRotation={0}
+            chartConfig={chartConfig}
+            bezier
+            withDots={false}
+            withInnerLines={false}
+            withOuterLines={false}
+            fromZero={true}
+            formatYLabel={(label) => label | 0}
+            withVerticalLabels={false}
+          />
+        }
+        {active === 'n' &&
+          <LineChart
+            data={n}
+            width={screenWidth - 30}
+            height={200}
+            verticalLabelRotation={0}
+            chartConfig={chartConfig}
+            bezier
+            withDots={false}
+            withInnerLines={false}
+            withOuterLines={false}
+            fromZero={true}
+            formatYLabel={(label) => label | 0}
+            withVerticalLabels={false}
+          />
+        }
+        {active === 'p' &&
+          <LineChart
+            data={p}
+            width={screenWidth - 30}
+            height={200}
+            verticalLabelRotation={0}
+            chartConfig={chartConfig}
+            bezier
+            withDots={false}
+            withInnerLines={false}
+            withOuterLines={false}
+            fromZero={true}
+            formatYLabel={(label) => label | 0}
+            withVerticalLabels={false}
+          />
+        }
+        {active === 'k' &&
+          <LineChart
+            data={k}
+            width={screenWidth - 30}
+            height={200}
+            verticalLabelRotation={0}
+            chartConfig={chartConfig}
+            bezier
+            withDots={false}
+            withInnerLines={false}
+            withOuterLines={false}
+            fromZero={true}
+            formatYLabel={(label) => label | 0}
+            withVerticalLabels={false}
+          />
+        }
       </View>
     </TouchableHighlight >
   )

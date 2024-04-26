@@ -13,13 +13,53 @@ const FarmScreen = ({ route }) => {
     labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
     datasets: [
       {
-        data: [90, 35, 34, 80, 99, 43, 54],
+        data: [90, 35, 34, 80, 99, 43, 54, 1, 12, 3, 123, 3, 2, 4, 4, 4, 24, 234, 324, 3, 24, 34, 34, 34, 342, 234, 3, 34, 34, 34, 34, 34, 343, 434, 340, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         color: (opacity = 1) => `rgba(43, 105, 198, ${opacity})`,
         strokeWidth: 2
       },
       {
         data: [46, 67, 78, 43, 87, 43, 86],
         color: (opacity = 1) => `rgba(108, 82, 184, ${opacity})`,
+        strokeWidth: 2
+      },
+      {
+        data: [46, 67, 78, 43, 87, 43, 86],
+        color: (opacity = 1) => `rgba(10, 82, 184, ${opacity})`,
+        strokeWidth: 2
+      }
+
+    ]
+  };
+
+  const n = {
+    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+    datasets: [
+      {
+        data: [90, 35, 34, 80, 99, 43, 54, 1, 12, 3, 123, 3, 2, 4, 4, 4, 24, 234, 324, 3, 24, 34, 34, 34, 342, 234, 3, 34, 34, 34, 34, 34, 343, 434, 340, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        color: (opacity = 1) => `rgba(43, 105, 198, ${opacity})`,
+        strokeWidth: 2
+      },
+    ]
+  };
+
+  const p = {
+    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+    datasets: [
+      {
+        data: [46, 67, 78, 43, 87, 43, 86],
+        color: (opacity = 1) => `rgba(108, 82, 184, ${opacity})`,
+        strokeWidth: 2
+      },
+    ]
+  };
+
+
+  const k = {
+    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+    datasets: [
+      {
+        data: [46, 67, 78, 43, 87, 43, 86],
+        color: (opacity = 1) => `rgba(10, 82, 184, ${opacity})`,
         strokeWidth: 2
       }
     ]
@@ -81,6 +121,9 @@ const FarmScreen = ({ route }) => {
             vegetableName={vegetableName}
             navigation={true}
             data={data}
+            n={n}
+            p={p}
+            k={k}
           />
         </View>
         {/* <Text style={styles.subHeadding}>Market Prediction</Text>
