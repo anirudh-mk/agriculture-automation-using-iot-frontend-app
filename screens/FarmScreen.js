@@ -9,21 +9,25 @@ const FarmScreen = ({ route }) => {
   const prevNpkData = useRef([]);
 
 
+  const nValues = npkData.map(item => parseFloat(item.n));
+  const pValues = npkData.map(item => parseFloat(item.p));
+  const kValues = npkData.map(item => parseFloat(item.k));
+
   const data = {
     labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
     datasets: [
       {
-        data: [90, 35, 34, 80, 99, 43, 54, 1, 12, 3, 123, 3, 2, 4, 4, 4, 24, 234, 324, 3, 24, 34, 34, 34, 342, 234, 3, 34, 34, 34, 34, 34, 343, 434, 340, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        data: [10, 13, 10, 3, 13, 14, 14, 14, 14, 14],
         color: (opacity = 1) => `rgba(43, 105, 198, ${opacity})`,
         strokeWidth: 2
       },
       {
-        data: [46, 67, 78, 43, 87, 43, 86],
+        data: [46, 67, 78, 43, 87, 43, 86, 60, 60, 60],
         color: (opacity = 1) => `rgba(108, 82, 184, ${opacity})`,
         strokeWidth: 2
       },
       {
-        data: [46, 67, 78, 43, 87, 43, 86],
+        data: [46, 20, 24, 43, 33, 43, 52, 52, 52, 52],
         color: (opacity = 1) => `rgba(10, 82, 184, ${opacity})`,
         strokeWidth: 2
       }
@@ -35,7 +39,7 @@ const FarmScreen = ({ route }) => {
     labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
     datasets: [
       {
-        data: [90, 35, 34, 80, 99, 43, 54, 1, 12, 3, 123, 3, 2, 4, 4, 4, 24, 234, 324, 3, 24, 34, 34, 34, 342, 234, 3, 34, 34, 34, 34, 34, 343, 434, 340, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        data: [10, 13, 10, 3, 13, 14, 14, 14, 14, 14],
         color: (opacity = 1) => `rgba(43, 105, 198, ${opacity})`,
         strokeWidth: 2
       },
@@ -46,7 +50,7 @@ const FarmScreen = ({ route }) => {
     labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
     datasets: [
       {
-        data: [46, 67, 78, 43, 87, 43, 86],
+        data: [46, 67, 78, 43, 87, 43, 86, 60, 60, 60],
         color: (opacity = 1) => `rgba(108, 82, 184, ${opacity})`,
         strokeWidth: 2
       },
@@ -58,7 +62,7 @@ const FarmScreen = ({ route }) => {
     labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
     datasets: [
       {
-        data: [46, 67, 78, 43, 87, 43, 86],
+        data: [46, 20, 24, 43, 33, 43, 52, 52, 52, 52],
         color: (opacity = 1) => `rgba(10, 82, 184, ${opacity})`,
         strokeWidth: 2
       }
@@ -69,7 +73,7 @@ const FarmScreen = ({ route }) => {
     // Fetch NPK data from the API
     const fetchNpkData = async () => {
       try {
-        const response = await fetch('http://anirudhmk123.pythonanywhere.com/api/v1/npk/get/e1d3282a-2743-447a-859e-a2b583b8ac34/');
+        const response = await fetch(`http://anirudhmk123.pythonanywhere.com/api/v1/npk/get/${farmId}/`);
         const data = await response.json();
         if (data && data.response) {
           setNpkData(data.response);

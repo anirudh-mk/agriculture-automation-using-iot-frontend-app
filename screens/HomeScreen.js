@@ -60,7 +60,7 @@ const HomeScreen = () => {
           farm={item.farm_name}
           vegetable={item.vegetable.name} // accessing the name property of vegetable
           daysLeft={item.vegetable.time_require + " days left"} // accessing the time_require property of vegetable
-          onPress={() => handleNavigation(item.id, item.farm_name, item.vegetable.name, item.vegetable.time_require)}
+          onPress={() => handleNavigation(item.farm_id, item.farm_name, item.vegetable.name, item.vegetable.time_require)}
         />
       );
     }
