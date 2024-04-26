@@ -51,6 +51,7 @@ const StatisticScreen = () => {
 
     return (
       <TextCard
+        key={item.id}
         mainHeadding={item.item.name}
         subHeadding={item.item.created_at}
       />
