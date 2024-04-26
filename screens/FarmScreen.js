@@ -1,12 +1,65 @@
 import { View, Text, StyleSheet, ScrollView } from 'react-native'
-import React, { useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import DetailsCard from '../components/DetailsCard'
 import GraphCard from '../components/GraphCard'
 
-
 const FarmScreen = ({ route }) => {
   const { farmId, farmName, vegetableName, timeRequired } = route.params;
-  console.log(farmName, vegetableName, timeRequired);
+  const [npkData, setNpkData] = useState([]);
+  const prevNpkData = useRef([]);
+
+
+  const data = {
+    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+    datasets: [
+      {
+        data: [90, 35, 34, 80, 99, 43, 54],
+        color: (opacity = 1) => `rgba(43, 105, 198, ${opacity})`,
+        strokeWidth: 2
+      },
+      {
+        data: [46, 67, 78, 43, 87, 43, 86],
+        color: (opacity = 1) => `rgba(108, 82, 184, ${opacity})`,
+        strokeWidth: 2
+      }
+    ]
+  };
+
+  useEffect(() => {
+    // Fetch NPK data from the API
+    const fetchNpkData = async () => {
+      try {
+        const response = await fetch('http://anirudhmk123.pythonanywhere.com/api/v1/npk/get/e1d3282a-2743-447a-859e-a2b583b8ac34/');
+        const data = await response.json();
+        if (data && data.response) {
+          setNpkData(data.response);
+        }
+      } catch (error) {
+        console.error('Error fetching NPK data:', error);
+      }
+    };
+
+    const intervalId = setInterval(fetchNpkData, 1000); // Fetch data every minute
+
+    return () => clearInterval(intervalId); // Cleanup interval on component unmount
+  }, []);
+
+  useEffect(() => {
+    // Check if npkData has changed
+    if (JSON.stringify(npkData) !== JSON.stringify(prevNpkData.current)) {
+      prevNpkData.current = npkData; // Update prevNpkData
+      // Trigger reload by changing the state variable
+      setDataChanged(!dataChanged);
+    }
+  }, [npkData]);
+
+  const [dataChanged, setDataChanged] = useState(false);
+
+  const handleDataChange = () => {
+    // Trigger reload by changing the state variable
+    setDataChanged(!dataChanged);
+  };
+
   return (
     <View style={styles.screen}>
       <View style={styles.headdingContainer}>
@@ -15,23 +68,27 @@ const FarmScreen = ({ route }) => {
       <ScrollView style={styles.scrollViewContainer}>
         <View style={styles.deailsCardContainer}>
           <DetailsCard
-            vagiatableName={vegetableName}
+            vegetableName={vegetableName}
             timeRequired={timeRequired}
+            n={npkData.length > 0 ? npkData[0].n : ''}
+            p={npkData.length > 0 ? npkData[0].p : ''}
+            k={npkData.length > 0 ? npkData[0].k : ''}
           />
         </View>
         <Text style={styles.subHeadding}>Live Data</Text>
         <View style={styles.deailsCardContainer}>
           <GraphCard
-            vagiatableName={vegetableName}
+            vegetableName={vegetableName}
             navigation={true}
+            data={data}
           />
         </View>
-        <Text style={styles.subHeadding}>Market Prediction</Text>
+        {/* <Text style={styles.subHeadding}>Market Prediction</Text>
         <View style={styles.deailsCardContainer}>
           <GraphCard
-            vagiatableName={vegetableName}
+            vegetableName={vegetableName}
           />
-        </View>
+        </View> */}
       </ScrollView>
     </View>
   )
@@ -39,7 +96,6 @@ const FarmScreen = ({ route }) => {
 
 const styles = StyleSheet.create({
   screen: {
-    display: "flex",
     flex: 1,
     paddingTop: 28,
     backgroundColor: 'white'
@@ -53,7 +109,6 @@ const styles = StyleSheet.create({
     fontWeight: "600",
   },
   scrollViewContainer: {
-    width: '100%',
     flex: 1
   },
   subHeadding: {

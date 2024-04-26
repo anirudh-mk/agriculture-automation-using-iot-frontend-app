@@ -6,7 +6,7 @@ import {
   LineChart,
 } from "react-native-chart-kit";
 
-const DetailsCard = ({ vagiatableName, navigation }) => {
+const DetailsCard = ({ vagiatableName, navigation, data }) => {
 
   const [active, setActive] = useState('npk')
 
@@ -17,22 +17,6 @@ const DetailsCard = ({ vagiatableName, navigation }) => {
     backgroundGradientFromOpacity: 0,
     backgroundGradientToOpacity: 0,
     color: (opacity = 1) => `rgba(43,105,198, ${opacity})`,
-  };
-
-  const data = {
-    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
-    datasets: [
-      {
-        data: [90, 35, 34, 80, 99, 43, 54],
-        color: (opacity = 1) => `rgba(43, 105, 198, ${opacity})`,
-        strokeWidth: 2
-      },
-      {
-        data: [46, 67, 78, 43, 87, 43, 86],
-        color: (opacity = 1) => `rgba(108, 82, 184, ${opacity})`,
-        strokeWidth: 2
-      }
-    ]
   };
 
   return (

@@ -4,7 +4,7 @@ import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons'
 import colors from '../utils/Colors'
 
 
-const DetailsCard = ({ vagiatableName, timeRequired }) => {
+const DetailsCard = ({ vagiatableName, timeRequired, n, p, k }) => {
 
     return (
         <TouchableHighlight style={styles.cardContainer}>
@@ -23,19 +23,19 @@ const DetailsCard = ({ vagiatableName, timeRequired }) => {
                     <View style={styles.circle}>
                         <View style={styles.innerCircle}>
                             <Text style={styles.dataHeadding}>N</Text>
-                            <Text style={styles.dataText}>20%</Text>
+                            <Text style={styles.dataText}>{n}</Text>
                         </View>
                     </View>
                     <View style={styles.circle}>
                         <View style={styles.innerCircle}>
                             <Text style={styles.dataHeadding}>P</Text>
-                            <Text style={styles.dataText}>65%</Text>
+                            <Text style={styles.dataText}>{p}</Text>
                         </View>
                     </View>
                     <View style={styles.circle}>
                         <View style={styles.innerCircle}>
                             <Text style={styles.dataHeadding}>K</Text>
-                            <Text style={styles.dataText}>52%</Text>
+                            <Text style={styles.dataText}>{k}</Text>
                         </View>
                     </View>
                 </View>
