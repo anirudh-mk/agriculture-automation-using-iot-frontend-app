@@ -17,17 +17,17 @@ const FarmScreen = ({ route }) => {
     labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
     datasets: [
       {
-        data: [10, 13, 10, 3, 13, 14, 14, 14, 14, 14],
+        data: nValues,//[10, 13, 10, 3, 13, 14, 14, 14, 14, 14]
         color: (opacity = 1) => `rgba(43, 105, 198, ${opacity})`,
         strokeWidth: 2
       },
       {
-        data: [46, 67, 78, 43, 87, 43, 86, 60, 60, 60],
+        data: pValues,//[46, 67, 78, 43, 87, 43, 86, 60, 60, 60]
         color: (opacity = 1) => `rgba(108, 82, 184, ${opacity})`,
         strokeWidth: 2
       },
       {
-        data: [46, 20, 24, 43, 33, 43, 52, 52, 52, 52],
+        data: kValues,//[46, 20, 24, 43, 33, 43, 52, 52, 52, 52]
         color: (opacity = 1) => `rgba(10, 82, 184, ${opacity})`,
         strokeWidth: 2
       }
@@ -39,7 +39,7 @@ const FarmScreen = ({ route }) => {
     labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
     datasets: [
       {
-        data: [10, 13, 10, 3, 13, 14, 14, 14, 14, 14],
+        data: nValues,
         color: (opacity = 1) => `rgba(43, 105, 198, ${opacity})`,
         strokeWidth: 2
       },
@@ -50,7 +50,7 @@ const FarmScreen = ({ route }) => {
     labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
     datasets: [
       {
-        data: [46, 67, 78, 43, 87, 43, 86, 60, 60, 60],
+        data: pValues,
         color: (opacity = 1) => `rgba(108, 82, 184, ${opacity})`,
         strokeWidth: 2
       },
@@ -62,7 +62,7 @@ const FarmScreen = ({ route }) => {
     labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
     datasets: [
       {
-        data: [46, 20, 24, 43, 33, 43, 52, 52, 52, 52],
+        data: kValues,
         color: (opacity = 1) => `rgba(10, 82, 184, ${opacity})`,
         strokeWidth: 2
       }
@@ -120,16 +120,20 @@ const FarmScreen = ({ route }) => {
           />
         </View>
         <Text style={styles.subHeadding}>Live Data</Text>
-        <View style={styles.deailsCardContainer}>
-          <GraphCard
-            vegetableName={vegetableName}
-            navigation={true}
-            data={data}
-            n={n}
-            p={p}
-            k={k}
-          />
-        </View>
+        {
+          nValues.length > 0 &&
+          <View style={styles.deailsCardContainer}>
+            <GraphCard
+              vegetableName={vegetableName}
+              navigation={true}
+              data={data}
+              n={n}
+              p={p}
+              k={k}
+            />
+          </View>
+        }
+
         {/* <Text style={styles.subHeadding}>Market Prediction</Text>
         <View style={styles.deailsCardContainer}>
           <GraphCard
